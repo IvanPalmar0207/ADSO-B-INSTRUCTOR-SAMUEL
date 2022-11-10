@@ -1,3 +1,5 @@
+'''Determinar cuales y cuantos números perfectos hay entre 1 y
+1000?'''
 numero=1
 i=1
 divisores=0

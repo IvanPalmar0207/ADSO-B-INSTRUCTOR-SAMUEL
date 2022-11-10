@@ -1,4 +1,5 @@
-'''Numeros de 3 digitos donde la suma del cubo de cada digito sea igual al numero.'''
+'''Calcular todos los números de 3 cifras tales que la suma
+de los cubos de las cifras es igual al valor del número.'''
 
 for n in range (100,1000):
     d=0
