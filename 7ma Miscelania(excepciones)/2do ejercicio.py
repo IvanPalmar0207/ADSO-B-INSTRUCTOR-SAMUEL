@@ -13,5 +13,5 @@ for post in blog_posts:
     try:
         total_Megusta+=post['Me gusta']
     except KeyError:
-        print('No contiene la palabra')
+        print('No contiene la palabra clave "Me gusta"')
 print('El total de me gustas es',total_Megusta)
