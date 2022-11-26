@@ -25,12 +25,13 @@ def artista(spotify):
         if artista not in spotify['artista']:
             spotify['artista'].append(artista)
         if artista == spotify['artista']:
-            print('El artista ya se encuentra en spotify')
+            print('El artista ya se encuentra en spotify',spotify['artista'])
             break
     return spotify
 #print(artista(spotify))
 
 def cancion(spotify):
+    print(spotify['artista'])
     artista1=input('¿A cual artista desea anexarle una cancion? ')
     if artista1 in spotify['artista']:
         cancion1=input('Ingresa una cancion del anterior artista ')
@@ -48,9 +49,7 @@ def buscar_artista(spotify):
     artista2=input('¿Cual artista deseas buscar? ')    
     for i in spotify['artista']:
         if i in artista2:
-            print('El artista buscado se encuentra en spotify')
-        else:
-            print('El artista buscado no se encuentra en spotify')
+            print('El artista buscado se encuentra en spotify',spotify['artista'])
     return spotify
 #print(buscar_artista(spotify))
 
@@ -58,7 +57,7 @@ def buscar_cancion(spotify):
     cancion2=input('¿Cual cancion deseas buscar? ')    
     for i in spotify['cancion']:
         if i in cancion2:
-            print('La cancion buscada se encuentra en spotify')
+            print('La cancion buscada se encuentra en spotify',spotify['cancion'])
         else:
             print('La cancion buscada no se encuentra en Spotify')
     return spotify
@@ -78,13 +77,13 @@ def ordenar(spotify):
 
 def cancion_mas_larga(spotify):
     larga=max(spotify['duracion'])
-    print('La cancion con la duracion mas larga es: ',larga,'minutos')
+    print('La cancion con la duracion mas larga es de ',larga,'minutos')
     return spotify
 #print(cancion_mas_larga(spotify))
 
 def cancion_mas_corta(spotify):
-    corta=max(spotify['duracion'])
-    print('La cancion con la duracion mas corta es: ',corta,'minutos')
+    corta=min(spotify['duracion'])
+    print('La cancion con la duracion mas corta es de ',corta,'minutos')
     return spotify
    
 #print(cancion_mas_corta(spotify))
@@ -97,11 +96,11 @@ def listaMenu():
     print('5-Eliminar Artista')
     print('6-Ordenar Artistas')
     print('7-Cancion mas larga')
-    print('8-Cnacion mas corta')
+    print('8-Cancion mas corta')
     print('0-Salir')
     menu=int(input('Bienvenido a Spotify, ingresa un numero '))
     
-    while menu!=8:
+    while menu!=0:
         match menu:  
             case 1:
                 artista(spotify)
@@ -113,7 +112,7 @@ def listaMenu():
                     listaMenu()
             case 2:
                 cancion(spotify)
-                v=input('Desea agregar otro artista: si/no')
+                v=input('Desea agregar otra cancion: si/no ')
                 if v =='si':
                     continue
                 else:
@@ -121,7 +120,7 @@ def listaMenu():
                     listaMenu()
             case 3:
                 buscar_artista(spotify)
-                v=('Desea buscar otro artista: si/no')
+                v=('Desea buscar otro artista: si/no ')
                 if v =='si':
                     continue
                 else:
@@ -129,7 +128,7 @@ def listaMenu():
                     listaMenu()
             case 4:
                 buscar_cancion(spotify)
-                v=('Desea buscar otra canción: si/no')
+                v=('Desea buscar otra canción: si/no ')
                 if v =='si':
                     continue
                 else:
@@ -137,7 +136,7 @@ def listaMenu():
                     listaMenu()
             case 5:
                 eliminar_artista(spotify)
-                v=('Desea eliminar otro artista: si/no')
+                v=('Desea eliminar otro artista: si/no ')
                 if v =='si':
                     continue
                 else:
@@ -145,21 +144,21 @@ def listaMenu():
                     listaMenu()
             case 6:
                 ordenar(spotify)
-                v=input('desea volver al menu si/no')
+                v=input('Desea volver al menu si/no ')
                 if v=='si':
                     listaMenu()
                 else: 
                     break
             case 7:
                 cancion_mas_larga(spotify)
-                v=input('desea volver al menu si/no')
+                v=input('desea volver al menu si/no ')
                 if v=='si':
                     listaMenu()
                 else: 
                     break
             case 8:
                 cancion_mas_corta(spotify)
-                v=input('desea volver al menu si/no')
+                v=input('Desea volver al menu si/no ')
                 if v=='si':
                     listaMenu()
                 else: 
