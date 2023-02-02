@@ -100,10 +100,10 @@ def listaMenu():
     print('0-Salir')
     menu=int(input('Bienvenido a Spotify, ingresa un numero '))
     
-    while True:
-        match menu:  
-            case 1:
-                artista(spotify)
+while True:
+    match menu:  
+        case 1:
+            artista(spotify)
                 v=input('Desea agregar otro artista: si/no ')
                 if v =='si':
                     continue
