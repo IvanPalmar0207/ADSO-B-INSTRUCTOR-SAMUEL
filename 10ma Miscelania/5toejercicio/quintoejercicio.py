@@ -60,10 +60,6 @@ def esdrujula(strr):
         elif i[l_be:l_en] in tildes:
             print('La palabra \"',strr,'\" es esdrujula')
             break
-    for i in strr:
-        if i not in tildes:
-            print('La palabra \"',strr,'\" no es esdrujula')
-            break
 def s_esdrujula(strr):
     tildes=['á','é','í','ó','ú','Á','É','Í','Ó','Ú']
     l=len(strr)//2+1
@@ -79,4 +75,3 @@ def s_esdrujula(strr):
                 break
     elif len(strr)<6:
         print('La palabra\"',strr,'\" no es sobre esdrujula')
-s_esdrujula('calídamente')
