@@ -110,15 +110,15 @@ while True:
                 else:
                     print('Gracias ',spotify)
                     listaMenu()
-            case 2:
-                cancion(spotify)
-                v=input('Desea agregar otra cancion: si/no ')
-                if v =='si':
-                    continue
-                else:
-                    print('Gracias ',spotify)
-                    listaMenu()
-            case 3:
+        case 2:
+            cancion(spotify)
+            v=input('Desea agregar otra cancion: si/no ')
+            if v =='si':
+                continue
+            else:
+                print('Gracias ',spotify)
+                listaMenu()
+        case 3:
                 buscar_artista(spotify)
                 v=('Desea buscar otro artista: si/no ')
                 if v =='si':
