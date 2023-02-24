@@ -1,1 +1,0 @@
-print('Ivan David Palmar Marinez\nInstructor: Samuel Padilla\nFicha: 2560664-B')
