@@ -12,7 +12,6 @@ class Persona: #Aqui se hace uso de la palabra reservada class para crear la cla
     def metodo(self): #Se crea un nuevo metodo para la clase persona el cual se llama metodo y tiene como parametro self el cual es el parametro obligatorio para evidenciar que el metodo se encuuentra dentro de la clase persona y permite al usuario especificar y acceder a los atributos y métodos de una instancia de la clase.
         print('Soy un método') #Cuando se haga uso del metodo metodo o se llame, pues aparecera y se imprimira el mensaje "soy un metodo" en la consola y se podra evidenciar que se hizo un buen uso del mismo.
 
-
 ob=Persona('Ana') #Se crea un objeto llamado "ob" que contiene la clase persona y en el lugar del parametro nombre, se le pasa un string que es 'Ana' el cual remplazara el parametro nombre por Ana y trabajara con el.
 print(ob.getNombre()) #En esta parta se imprime el objeto "ob" con el metodo getNombre() que dara como resultado y mostrara en consola el string 'Ana'
 ob.setNombre('Maria') #Aqui a traves del objeto "ob" se hace un llamado del metodo setNombre() y se le pasa como parametro 'Maria', el cual modificara el anterior parametro dado en el metodo getNombre() en cual fua 'Ana'. 
