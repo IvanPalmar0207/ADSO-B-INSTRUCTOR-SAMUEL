@@ -8,6 +8,8 @@ incementando las extras. No puede hacer mas de dos horas diarias y trabaja de
 lunes a viernes. Valide '''
 
 class empleado:
+    contador=0
+    contador+=1
     def __init__(self, nombre, cargo, salario,extras):
         self.__nombre=nombre
         self.__cargo=cargo
