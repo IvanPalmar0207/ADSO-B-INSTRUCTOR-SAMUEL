@@ -8,14 +8,14 @@ incementando las extras. No puede hacer mas de dos horas diarias y trabaja de
 lunes a viernes. Valide '''
 
 class empleado:
-    contador=0
-    contador+=1
+    c=0
     def __init__(self, nombre, cargo, salario,extras):
-        self.__nombre=nombre
-        self.__cargo=cargo
-        self.__salario=salario
-        self.__extras=extras
-    
+            self.__nombre=nombre
+            self.__cargo=cargo
+            self.__salario=salario
+            self.__extras=extras
+            self.__class__.c+=1
+        
     def getNombre(self):
         return self.__nombre
     
@@ -63,6 +63,8 @@ class empleado:
             return mensaje
 
 ob=empleado('Goku','Heroe',1160000,5)
+print(ob.c)
 print(ob.getNombre(),ob.getCargo(),ob.getsalario(),ob.lahora(),ob.minimoaumento(),ob.extra())
 ob1=empleado('Messi','Futbolista',15000000,0)
+print(ob.c)
 print(ob1.getNombre(),ob1.getCargo(),ob1.getsalario(),ob1.lahora(),ob1.minimoaumento(),ob1.extra())
