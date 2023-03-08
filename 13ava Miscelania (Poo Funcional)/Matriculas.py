@@ -107,7 +107,7 @@ class inscripcion:
     def sdetalles(self,detalles):
         self.detalles=detalles
     def srequisitos(self,requisitos):
-        self.requisitos=requistos
+        self.requisitos=requisitos
     def sfinicio(self,inicio):
         self.finicio=inicio
     def sffin(self,fin):
@@ -244,3 +244,67 @@ class acta:
 #curso1=curso(1,'Desarrollaremos una solucion para un sistema hotelero','10/30/1002','maestria','adsito')
 #acta=acta(1,'Esta es la acta del curso No1','9/1/1002')
 #acta.pagos(curso1)
+
+def menuclases():
+    print('\nBienvenido al menu del Sena')
+    print('1-Registrar profesor')
+    print('2-Registrar alumno')
+    print('3-Agregar materias')
+    print('0-Salir')
+    menu=int(input(''))
+print('Bienvenido al menu del Sena')
+print('1-Registrar profesor')
+print('2-Registrar alumno')
+print('3-Agregar materias')
+print('0-Salir')
+menu=int(input(''))
+while True:
+    match menu:
+        case 1:
+            id=int(input('¿Cual es el id del instructor?\n-'))
+            nombre1=input('¿Cual es el nombre del instructor?\n-')
+            edad=int(input('¿Cual es la edad del instrcutor?\n-'))
+            contacto=int(input('¿Cual es el numero de contacto del instructor?\n-'))
+            nombreuse=input('¿Cual es el nombre de usuario del instructor?\n-')
+            contraseña=input('¿Cual es la contraseña del instructor?\n-')
+            credenciales=input('¿Cuales son las credenciales del instructor?\n-')
+            instructor1=instructor(id,nombre1,edad,contacto,nombreuse,contraseña,credenciales)
+            print('\nDatos del instructor: ',instructor1.gid(),instructor1.gnombre(),instructor1.gedad(),instructor1.gcontacto(),instructor1.gnombreuse(),instructor1.gcontraseña(),instructor1.gcredenciales())
+            pregunta=input('\n¿Quieres agregar materias al?\n-')
+            if pregunta == 'Si' or pregunta=='si':
+                continue
+            else:
+                menuclases()
+        case 2:
+            id=int(input('¿Cual es el id del aprendiz?\n-'))
+            nombre1=input('¿Cual es el nombre del aprendiz?\n-')
+            edad=int(input('¿Cual es la edad del aprendiz?\n-'))
+            contacto=int(input('¿Cual es el numero de contacto del aprendiz?\n-'))
+            nombreuse=input('¿Cual es el nombre de usuario del aprendiz?\n-')
+            contraseña=input('¿Cual es la contraseña del aprendiz?\n-')
+            curso1=input('¿Cuales es el curso del aprendiz?\n-')
+            estudiante1=estudiante(id,nombre1,edad,contacto,nombreuse,contraseña,curso1)
+            print('\nDatos del aprendiz: ',estudiante1.gid(),estudiante1.gnombre(),estudiante1.gedad(),estudiante1.gcontacto(),estudiante1.gnombreuse(),estudiante1.gcontraseña(),estudiante1.gcurso())
+            pregunta=input('\n¿Quieres agregar otro aprendiz?\n-')
+            if pregunta == 'Si' or pregunta=='si':
+                continue
+            else:
+               menuclases()
+        case 3:
+            print('Como instructor puedes agregar nuevas materias')      
+            id=int(input('¿Cual es el id de la materia?\n-'))
+            nmateria=input('¿Cual es el nombre de la materia\n-')
+            descripcion=input('¿Cual es la descripcion de la materia?\n-')
+            nombre=instructor1.gnombre()
+            horario=input('¿Cuantas horas a la semana es esta materia?\n-')
+            ma=materia(id,nmateria,descripcion,nombre,horario)
+            instructor1.agregarmateria(ma)
+            print(ma.getidm(),ma.getNombrem(),ma.getdescripcionm(),ma.getinstructorm(),ma.gethorariom())
+            if pregunta == 'Si' or pregunta=='si':
+                    continue
+            else:
+                menuclases()
+            
+        case 0:
+            print('Gracias por usar la pagina del sena')
+            quit()

@@ -99,17 +99,17 @@ def listaMenu():
     print('8-Cancion mas corta')
     print('0-Salir')
     menu=int(input('Bienvenido a Spotify, ingresa un numero '))
-    
+menu=int(input('Bienvenido a Spotify, ingresa un numero '))
 while True:
     match menu:  
         case 1:
             artista(spotify)
-                v=input('Desea agregar otro artista: si/no ')
-                if v =='si':
-                    continue
-                else:
-                    print('Gracias ',spotify)
-                    listaMenu()
+            v=input('Desea agregar otro artista: si/no ')
+            if v =='si':
+                continue
+            else:
+                print('Gracias ',spotify)
+                listaMenu()
         case 2:
             cancion(spotify)
             v=input('Desea agregar otra cancion: si/no ')
@@ -126,7 +126,7 @@ while True:
                 else:
                     print('Gracias ',spotify)
                     listaMenu()
-            case 4:
+        case 4:
                 buscar_cancion(spotify)
                 v=('Desea buscar otra canción: si/no ')
                 if v =='si':
@@ -134,7 +134,7 @@ while True:
                 else:
                     print('Gracias ',spotify)
                     listaMenu()
-            case 5:
+        case 5:
                 eliminar_artista(spotify)
                 v=('Desea eliminar otro artista: si/no ')
                 if v =='si':
@@ -142,28 +142,28 @@ while True:
                 else:
                     print('Gracias ',spotify)
                     listaMenu()
-            case 6:
+        case 6:
                 ordenar(spotify)
                 v=input('Desea volver al menu si/no ')
                 if v=='si':
                     listaMenu()
                 else: 
                     break
-            case 7:
+        case 7:
                 cancion_mas_larga(spotify)
                 v=input('desea volver al menu si/no ')
                 if v=='si':
                     listaMenu()
                 else: 
                     break
-            case 8:
+        case 8:
                 cancion_mas_corta(spotify)
                 v=input('Desea volver al menu si/no ')
                 if v=='si':
                     listaMenu()
                 else: 
                     break
-            case _:
+        case _:
                 print('Gracias por usar Spotify')
                 exit()
 
