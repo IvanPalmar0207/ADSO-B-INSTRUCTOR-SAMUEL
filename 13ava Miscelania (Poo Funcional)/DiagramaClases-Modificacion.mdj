@@ -1769,6 +1769,7 @@
 											"model": {
 												"$ref": "AAAAAAGGuL9Af30oOC4="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 533,
 											"top": 371,
@@ -1782,7 +1783,7 @@
 									"left": 528,
 									"top": 321,
 									"width": 105.748046875,
-									"height": 68
+									"height": 53
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -1805,7 +1806,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 533,
-											"top": 394,
+											"top": 379,
 											"width": 95.748046875,
 											"height": 13,
 											"text": "+Consultar()",
@@ -1822,7 +1823,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 533,
-											"top": 409,
+											"top": 394,
 											"width": 95.748046875,
 											"height": 13,
 											"text": "+ProcesoPago()",
@@ -1849,7 +1850,7 @@
 									],
 									"font": "Arial;13;0",
 									"left": 528,
-									"top": 389,
+									"top": 374,
 									"width": 105.748046875,
 									"height": 38
 								},
