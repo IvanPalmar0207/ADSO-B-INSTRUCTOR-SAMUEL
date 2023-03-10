@@ -1,5 +1,3 @@
-import sys
-
 class registrar:
     def __init__(self,id,nombre,edad,contacto,nombreuse,contraseña):
         self.__id=id
@@ -92,12 +90,7 @@ class instructor(registrar):
         self.acta.append(ins)
     def getacta(self):
         return self.acta
-'Ejemplo de ejecucion'
-#ob=instructor('yo',18,32,1232312,'43423qd','dwdad','yosoyprofe')
-#ma1=materia(1,'ciencia','hola','samuel','6horas')
-#ob.consultarmate(ma1)
-#for i in ob.getconsulta():
-#print(i.getidm())
+
 class inscripcion:
     def __init__(self,id,detalles,requisitos,finicio,ffin):
         self.id=id
@@ -147,17 +140,6 @@ class estudiante(registrar):
     def gacta(self):
         return self.acta1
         
-'Ejemplo de ejecucion No1'
-#est=estudiante(1,'ivan',18,3214344449,'Ivan_Palmar','Teresa0205.','Adso')
-#ins=inscripcion(23,'admitido','Bachillerato','hoy','mañana')
-#est.realizarincripcion(ins)
-#for i in est.ginscripcion():
-#    print(i.gid())
-'Ejemplo de ejecucion No2'
-#print(est.gcurso())
-#print(ob.delmateria(est))
-#print(est.gcurso())
-
 class curso:
     c=0
     def __init__(self,id,descripcion,fechainicio,nivelacademico,nombre):
@@ -208,16 +190,6 @@ class curso:
             self.maestria.append(self.id)
             return self.maestria
 
-
-'Ejemplo de ejecucion'
-#curso=curso(1,'Desarrollaremos una solucion para un sistema hotelero','10/30/1002','tecnico','adsito')
-#curso.cinscripcion(2, 'hola', 'Terminar el bachillerato', 'hoy', 'mañana')
-#print(curso.agruparc())
-#curso.agregarmateria(1,'arquitectura','Diseñaremos la arquitectura del proyecto','Miguel Gomez','12horas')
-#curso.agregarmateria(2,'programacion','Diseñaremos el backen del proyecto','Samuel Padilla','18horas')
-#for i in curso.ginscripcion():
-#    print(i.gid(),i.gdetalles(),i.grequisitos(),i.gfinicio(),i.gffinal())
-
 class acta:
     c=0
     def __init__(self, id, detalles, fechacreacion):
@@ -240,22 +212,6 @@ class acta:
             print('El curso tiene un precio de 5millones el semestre, contando que son 10 semestres, el precio final seria de 50millones.')
         elif cursito.getNivelacademicoc()=='Mestria' or cursito.getNivelacademicoc() == 'mestria':
             print('La maestria en nuestra institucion tiene unvalor de 40 millones de pesos.')
-
-'Ejemplo de ejecucion No1'
-#es=estudiante(1 ,'ivan', 18, 3214344449, 'Ivan_Palmar07', 'Teresa0205.', 'ADSO')
-#ac=acta(1, 'hola','hoy')
-#es.acta(ac)
-#for i in es.gacta():
-#    print(i.getid())
-
-'Ejemplo de Ejecucion No2'
-#curso=curso(1,'Desarrollaremos una solucion para un sistema hotelero','10/30/1002','Tecnologo','adsito')
-#acta=acta(1,'Esta es la acta del curso No1','9/1/1002')
-#acta.pagos(curso)
-#curso1=curso(1,'Desarrollaremos una solucion para un sistema hotelero','10/30/1002','maestria','adsito')
-#acta=acta(1,'Esta es la acta del curso No1','9/1/1002')
-#acta.pagos(curso1)
-
 
 print('Bienvenido al menu del Sena'.title())
 print('1-Agregar materia/as a un curso (Instructor)')
