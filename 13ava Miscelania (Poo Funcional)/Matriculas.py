@@ -271,6 +271,7 @@ while True:
                 break
             else:
                 print('Has decidido no agregar mas materias')
+                break
         case 2:
             print('\nIngresa los detalles del curso al cual deseas realizar tu inscripcion')
             id=int(input('¿Cual es el id del curso?\n-'))
