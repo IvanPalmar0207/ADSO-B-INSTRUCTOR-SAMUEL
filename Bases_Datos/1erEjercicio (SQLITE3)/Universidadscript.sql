@@ -122,6 +122,7 @@ DELETE FROM Curso Where cur_Id = 10;
 
 SELECT * FROM Curso;
 
+
 DROP TABLE Curso;
 DROP TABLE Estudiante;
 DROP TABLE Profesor;
