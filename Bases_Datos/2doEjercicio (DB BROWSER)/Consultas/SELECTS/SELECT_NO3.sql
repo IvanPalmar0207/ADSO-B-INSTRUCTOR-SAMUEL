@@ -1,0 +1,1 @@
+SELECT * FROM tb_categoria WHERE nombre_cat like 'D%';

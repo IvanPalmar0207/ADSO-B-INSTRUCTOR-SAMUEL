@@ -1,0 +1,1 @@
+SELECT * FROM tb_proveedores WHERE nombre_pr like 'N%';

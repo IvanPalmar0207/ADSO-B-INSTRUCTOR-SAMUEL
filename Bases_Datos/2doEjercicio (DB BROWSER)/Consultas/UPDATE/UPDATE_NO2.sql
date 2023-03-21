@@ -1,0 +1,1 @@
+UPDATE tb_proveedores SET pais_pr='Canada',capitalPais_pr='Otawa' WHERE id_pr=20;

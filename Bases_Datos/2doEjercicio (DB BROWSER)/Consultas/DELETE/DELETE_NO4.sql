@@ -1,0 +1,1 @@
+DELETE FROM tb_proveedores WHERE documento_pr=54534543;

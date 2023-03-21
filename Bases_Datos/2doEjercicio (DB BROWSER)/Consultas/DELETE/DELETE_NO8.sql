@@ -1,0 +1,1 @@
+DELETE FROM tb_categoria WHERE id_cat= 9;

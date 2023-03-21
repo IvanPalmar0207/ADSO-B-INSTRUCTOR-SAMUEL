@@ -1,0 +1,1 @@
+SELECT id_pr,nombre_pr,pais_pr FROM tb_proveedores;

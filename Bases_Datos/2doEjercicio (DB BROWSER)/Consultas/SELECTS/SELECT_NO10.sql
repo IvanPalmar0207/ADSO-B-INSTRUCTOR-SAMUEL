@@ -1,0 +1,1 @@
+SELECT * FROM tb_proveedores WHERE pais_pr = 'Japon';

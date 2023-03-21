@@ -1,0 +1,1 @@
+UPDATE tb_producto SET precioUnitario_pro=20000 WHERE id_pro=19;

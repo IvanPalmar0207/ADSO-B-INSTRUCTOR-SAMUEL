@@ -1,0 +1,1 @@
+SELECT * FROM tb_categoria WHERE id_cat = 5;

@@ -1,0 +1,1 @@
+SELECT * FROM tb_proveedores WHERE id_pr BETWEEN 1 AND 10;

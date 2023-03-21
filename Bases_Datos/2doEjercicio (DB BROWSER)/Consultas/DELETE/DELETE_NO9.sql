@@ -1,0 +1,1 @@
+DELETE FROM tb_categoria WHERE descripcion_cat='Lo mejor de medellin puesto a la venta aqui para todos los comensales';

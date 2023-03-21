@@ -1,0 +1,1 @@
+UPDATE tb_producto set nombre_pro='Albondigas' WHERE id_pro=20;

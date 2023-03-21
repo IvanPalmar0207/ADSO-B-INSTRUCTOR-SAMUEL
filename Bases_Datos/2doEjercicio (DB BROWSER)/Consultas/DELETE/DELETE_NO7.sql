@@ -1,0 +1,1 @@
+DELETE FROM tb_categoria WHERE nombre_cat='Arroz Chino';

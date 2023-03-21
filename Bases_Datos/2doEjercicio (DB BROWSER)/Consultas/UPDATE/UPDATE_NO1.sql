@@ -1,0 +1,1 @@
+UPDATE tb_proveedores SET nombre_pr='Eren',email_pr='Eren@gmail.com',nombreCompañia_pr='Attack on titan' WHERE id_pr=20;

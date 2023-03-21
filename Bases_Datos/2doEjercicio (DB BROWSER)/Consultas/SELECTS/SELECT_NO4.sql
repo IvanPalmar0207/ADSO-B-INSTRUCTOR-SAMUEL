@@ -1,0 +1,1 @@
+SELECT * FROM tb_categoria WHERE id_cat BETWEEN 6 and 8;

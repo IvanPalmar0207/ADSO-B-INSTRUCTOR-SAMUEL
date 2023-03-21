@@ -1,0 +1,1 @@
+DELETE FROM tb_proveedores WHERE id_pr=17;

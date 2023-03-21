@@ -1,0 +1,1 @@
+DELETE FROM tb_proveedores WHERE capitalPais_pr='Monte Video';

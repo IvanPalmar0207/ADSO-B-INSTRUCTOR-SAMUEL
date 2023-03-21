@@ -1,0 +1,1 @@
+UPDATE tb_categoria SET descripcion_cat='Las mejores proteinas que te ayudaran a tener mucha mas resistenciia frente a prubas fisicas' WHERE id_cat=7;
