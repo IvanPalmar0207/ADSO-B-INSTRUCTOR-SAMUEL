@@ -1,0 +1,153 @@
+BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS "tb_profesor" (
+	"doc_pro"	TEXT(11),
+	"nom_pro"	TEXT(30),
+	"ape_pro"	TEXT(30),
+	"cate_pro"	INTEGER,
+	"sal_pro"	INTEGER,
+	PRIMARY KEY("doc_pro")
+);
+CREATE TABLE IF NOT EXISTS "tb_curso" (
+	"cod_cur"	INTEGER,
+	"nom_cur"	TEXT(100),
+	"hor_cur"	INTEGER,
+	"val_cur"	INTEGER,
+	PRIMARY KEY("cod_cur" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "tb_estudiante" (
+	"doc_estu"	TEXT(11),
+	"nom_estu"	TEXT(30),
+	"ape_estu"	TEXT(30),
+	"edad_estu"	INTEGER,
+	PRIMARY KEY("doc_estu")
+);
+CREATE TABLE IF NOT EXISTS "tb_cliente" (
+	"id_cli"	TEXT(11),
+	"nom_cli"	TEXT(30),
+	"ape_cli"	TEXT(30),
+	"dir_cli"	TEXT(100),
+	"dep_cli"	TEXT(20),
+	"mesCum_cli"	TEXT(10),
+	PRIMARY KEY("id_cli")
+);
+CREATE TABLE IF NOT EXISTS "tb_pedido" (
+	"id_ped"	INTEGER,
+	"id_cli"	TEXT(11),
+	"fec_ped"	TEXT(20),
+	"val_ped"	INTEGER,
+	PRIMARY KEY("id_ped" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "tb_articuloPedido" (
+	"id_ped"	INTEGER,
+	"id_art"	INTEGER,
+	"cantidadArticulo_artp"	INTEGER,
+	"valorVentaArticulo_artp"	INTEGER,
+	FOREIGN KEY("id_ped") REFERENCES "tb_pedido"("id_ped")
+);
+CREATE TABLE IF NOT EXISTS "tb_compañia" (
+	"nit_comp"	TEXT(11),
+	"nombre_comp"	TEXT(30),
+	"añoFundacion_comp"	INTEGER,
+	"representanteLegal_comp"	TEXT(100),
+	PRIMARY KEY("nit_comp")
+);
+CREATE TABLE IF NOT EXISTS "tb_tipoAutomotores" (
+	"tipo_aut"	INTEGER,
+	"nombre_aut"	TEXT,
+	PRIMARY KEY("tipo_aut")
+);
+CREATE TABLE IF NOT EXISTS "tb_aseguramientos" (
+	"codigo_ase"	INTEGER,
+	"fechaInicio_ase"	TEXT,
+	"fechaExpiracion_ase"	TEXT,
+	"valorAseguradora_ase"	INTEGER,
+	"estado_ase"	TEXT,
+	"costo_ase"	INTEGER,
+	"placa_aut"	TEXT,
+	PRIMARY KEY("codigo_ase" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "tb_incidentes" (
+	"codigo_inc"	INTEGER,
+	"fecha_inc"	TEXT,
+	"placa_aut"	TEXT,
+	"lugar_inc"	TEXT,
+	"heridos_inc"	INTEGER,
+	"fatalidades_inc"	INTEGER,
+	"involucrados_inc"	INTEGER,
+	FOREIGN KEY("placa_aut") REFERENCES "tb_automotores"("placa_aut"),
+	PRIMARY KEY("codigo_inc" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "tb_estudianteExCurso" (
+	"fechaIncio_estcur"	TEXT(30),
+	"cod_cur"	INTEGER(11),
+	"doc_est"	TEXT,
+	FOREIGN KEY("doc_est") REFERENCES "tb_estudiante",
+	FOREIGN KEY("cod_cur") REFERENCES "tb_curso"("cod_cur")
+);
+CREATE TABLE IF NOT EXISTS "tb_articulo" (
+	"id_art"	INTEGER,
+	"tit_art"	TEXT(100),
+	"aut_art"	TEXT(100),
+	"edi_art"	TEXT(300),
+	"pre_art"	INTEGER,
+	PRIMARY KEY("id_art" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "tb_automotores" (
+	"placa_aut"	TEXT,
+	"marca_aut"	TEXT,
+	"tipo_aut"	INTEGER,
+	"modelo_aut"	INTEGER,
+	"pasajeros_aut"	INTEGER,
+	"cilindraje_aut"	INTEGER,
+	"chasis_aut"	TEXT,
+	FOREIGN KEY("tipo_aut") REFERENCES "tb_tipoAutomotores"("tipo_aut"),
+	PRIMARY KEY("placa_aut")
+);
+INSERT INTO "tb_profesor" VALUES ('63.502.720','Martha','Rojas',2,690000);
+INSERT INTO "tb_profesor" VALUES ('91.216.904','Carlos','Perez',3,950000);
+INSERT INTO "tb_profesor" VALUES ('13.826.789','Maritza','Angarita',1,550000);
+INSERT INTO "tb_profesor" VALUES ('1.098.765.789','Alejandra','Torres',4,1100000);
+INSERT INTO "tb_curso" VALUES (149842,'Fundamentos de Bases de datos',40,500000);
+INSERT INTO "tb_curso" VALUES (250067,'Fundamentos de SQL',20,700000);
+INSERT INTO "tb_curso" VALUES (289011,'Manejo de Mysql',45,550000);
+INSERT INTO "tb_curso" VALUES (345671,'Fundamentals of Oracle',60,3000000);
+INSERT INTO "tb_estudiante" VALUES ('63.502.720','Maria','Perez',23);
+INSERT INTO "tb_estudiante" VALUES ('91.245.678','Carlos Jose','Lopez',25);
+INSERT INTO "tb_estudiante" VALUES ('1.098.098.097','Jonatan','Ardila',17);
+INSERT INTO "tb_estudiante" VALUES ('1.098.765.678','Carlos','Martinez',19);
+INSERT INTO "tb_cliente" VALUES ('63502718','Maritza','Rojas','Calle 34 No.14 - 45','Santander','Abril');
+INSERT INTO "tb_cliente" VALUES ('13890234','Roger','Ariza','Cra 30 No.13 - 45','Antioquia','Junio');
+INSERT INTO "tb_cliente" VALUES ('77191956','Juan Carlos','Arenas','Diagonal 23 No.12 - 34 apto 101','Valle','Marzo');
+INSERT INTO "tb_cliente" VALUES ('1098765789','Catalina','Zapata','Av el Libertador No. 30 - 14','Cauca','Marzo');
+INSERT INTO "tb_pedido" VALUES (1,'63502718','25/02/2012',120000);
+INSERT INTO "tb_pedido" VALUES (2,'77191956','30/04/2012',55000);
+INSERT INTO "tb_pedido" VALUES (3,'63502718','10/12/2011',260000);
+INSERT INTO "tb_pedido" VALUES (4,'1098765789','25/02/2012',1800000);
+INSERT INTO "tb_articuloPedido" VALUES (1,1,2,120000);
+INSERT INTO "tb_articuloPedido" VALUES (2,4,1,55000);
+INSERT INTO "tb_articuloPedido" VALUES (3,3,6,260000);
+INSERT INTO "tb_articuloPedido" VALUES (4,2,20,1800000);
+INSERT INTO "tb_compañia" VALUES ('800890890-2','Seguros Atlantida',1998,'Carlos Lopez');
+INSERT INTO "tb_compañia" VALUES ('899999999-1','Aseguradora Rojas',1991,'Luis Fernando Rojas');
+INSERT INTO "tb_compañia" VALUES ('899999999-5','Seguros del Estadio',2001,'Maria Margaita Perez');
+INSERT INTO "tb_tipoAutomotores" VALUES (1,'Automoviles');
+INSERT INTO "tb_tipoAutomotores" VALUES (2,'Camperos');
+INSERT INTO "tb_tipoAutomotores" VALUES (3,'Camiones');
+INSERT INTO "tb_aseguramientos" VALUES (1,'2012-09-30','2013-09-30',30000000,'Vigente',500000,'FLL420');
+INSERT INTO "tb_aseguramientos" VALUES (2,'2012-09-27','2013-09-27',35000000,'Vigente',600000,'DKZ820');
+INSERT INTO "tb_aseguramientos" VALUES (3,'2011-09-28','2012-09-28',50000000,'Vencido',800000,'KJQ920');
+INSERT INTO "tb_incidentes" VALUES (1,'2012-09-30','DKZ820','Bucaramanga',0,0,2);
+INSERT INTO "tb_incidentes" VALUES (2,'2012-09-27','FLL420','Giron',1,0,1);
+INSERT INTO "tb_incidentes" VALUES (3,'2011-09-28','FLL420','Bucaramanga',1,0,2);
+INSERT INTO "tb_estudianteExCurso" VALUES ('01/02/2011',289011,'1.098.765.678');
+INSERT INTO "tb_estudianteExCurso" VALUES ('01/03/2011',250067,'63.502.720');
+INSERT INTO "tb_estudianteExCurso" VALUES ('01/02/2011',289011,'1.098.765.678');
+INSERT INTO "tb_estudianteExCurso" VALUES ('01/04/2011',345671,'63.502.720');
+INSERT INTO "tb_articulo" VALUES (1,'Redes cisco','Ernesto Arigasello','Alfaomega-Rama',60000);
+INSERT INTO "tb_articulo" VALUES (2,'Facebook y twitter para adultos','Veloso Claudio','Alfaomega',52000);
+INSERT INTO "tb_articulo" VALUES (3,'Creacion de un portal con php y mysql','Jacobo Pavon Puertas','Alfaomega-Rama',40000);
+INSERT INTO "tb_articulo" VALUES (4,'Administracion de sistemas operativos','Julio Gomez Lopez','Alfaomega-Rama',55000);
+INSERT INTO "tb_automotores" VALUES ('FLL420','chevrolet corsa',1,2003,5,1400,'wywzzz167kk009d25');
+INSERT INTO "tb_automotores" VALUES ('DKZ820','renault stepway',1,2008,5,1600,'wywwzz157kk009d45');
+INSERT INTO "tb_automotores" VALUES ('KJQ920','kia sportrage',2,2009,7,2000,'wywzzz157kk009d25');
+COMMIT;
