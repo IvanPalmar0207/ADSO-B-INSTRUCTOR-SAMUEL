@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/palma/OneDrive/Documents/Ivan Palmar/SENA/3er Trimestre/Samuel Padilla/Repositorio/ADSO-B-INSTRUCTOR-SAMUEL/Bases_Datos/3erEjercicio (DB BROWSER-Parte2)/LaboratorioSQL.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure query browser pragmas" current="1"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="125"/><column_width id="3" width="2383"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,15:mainsqlite_sequence"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="CONSULTA_NO1.sql">/*Muestre el salario de los profesores ordenado por categoria*/
+SELECT nom_pro,ape_pro,cate_pro,sal_pro FROM tb_profesor ORDER by cate_pro;</sql><sql name="CONSULTA_NO2.sql">/*Muetre los cursos cuyo valor sea mayor a $500000*/
+SELECT * FROM tb_curso WHERE val_cur &gt; 500000;</sql><sql name="CONSULTA_NO3.sql">/*Cuente el numero de estudiantes cuya edad sea mayor a 22*/
+SELECT count (edad_estu) as Mayor_a_22 FROM tb_estudiante WHERE edad_estu &gt; 22;</sql><sql name="CONSULTA_NO4.sql">/*Muestre el nombre y la edad del estudiante mas joven*/
+SELECT nom_estu, min(edad_estu) as edad_estu FROM tb_estudiante;</sql><sql name="CONSULTA_NO5.sql">/*Calcular el valor promedio de los cursos cuyas horas sean mayores a 40*/
+SELECT avg(val_cur) as val_cur FROM tb_curso where hor_cur &gt; 40;</sql><sql name="CONSULTA_NO6.sql">/*Obtener el sueldo promedio de los profesores de la categoria 1.*/
+SELECT avg(sal_pro) as promedio_pro FROM tb_profesor WHERE cate_pro=1;</sql><sql name="CONSULTA_NO7.sql">/*Muestre todos los campos de la tabla curso en orden ascendente segund el valor*/
+SELECT * FROM tb_curso ORDER by val_cur;</sql><sql name="CONSULTA_NO8.sql">/*Muestre el nombre del profesor con menor sueldo*/
+SELECT nom_pro,ape_pro,min(sal_pro) as sal_pro FROM tb_profesor;</sql><sql name="CONSULTA_NO9.sql">/*Visualizar todos los estudiantes (codigo y nombre) que iniciaron cursos el 
+01/02/2011, del curso debe mostrarse el nombre, las horas y el valor
+*/
+
+SELECT estucur.fechaIncio_estcur,estu.doc_estu,
+estu.nom_estu,cur.nom_cur,cur.hor_cur,cur.val_cur
+FROM tb_estudianteExCurso as estucur INNER JOIN tb_estudiante as estu
+on estucur.doc_est=estu.doc_estu INNER JOIN tb_curso as cur
+on estucur.cod_cur=cur.cod_cur WHERE estucur.fechaIncio_estcur='01/02/2011';</sql><sql name="CONSULTA_NO10.sql">/*Visualice los profesores cuyo sueldo este entre $500000 y $700000*/
+
+SELECT * FROM tb_profesor WHERE sal_pro BETWEEN 500000 AND 700000 ORDER by cate_pro;</sql><sql name="CONSULTA_NO11.sql">/*Visualizar el nombre, apellido y direccion de todos aquellos clientes que haya
+realizado un pedido el dia 25/02/2012*/
+
+SELECT cli.nom_cli,ape_cli,cli.dir_cli,ped.fec_ped 
+FROM tb_pedido as ped INNER JOIN tb_cliente as cli
+on ped.id_cli=cli.id_cli WHERE ped.fec_ped='25/02/2012';</sql><sql name="CONSULTA_NO12.sql">/*Listar todos los pedidos realizados incluyendo el nombre del articulo*/
+SELECT ped.id_ped,ped.id_cli,art.tit_art,art.pre_art as valorUnidad,ped.fec_ped,ped.val_ped
+FROM tb_pedido as ped LEFT JOIN tb_articulo as art
+on ped.id_ped=art.id_art;</sql><sql name="CONSULTA_NO13.sql">/*Visualizar los clientes que cumplen años en marzo*/
+
+SELECT * FROM tb_cliente WHERE mesCum_cli='Marzo';</sql><sql name="CONSULTA_NO14.sql">/*Visualizar los datos del pedido 1, incluyendo el nombre del cliente, la direccion
+del mismo, el nombre y el valor de los articulos que tiene dicho pedido*/
+
+SELECT ped.id_ped,cli.nom_cli,cli.dir_cli,art.tit_art,pre_art,ped.val_ped
+FROM tb_pedido as ped INNER JOIN tb_cliente as cli
+on ped.id_cli=cli.id_cli INNER JOIN tb_articulo as art
+on ped.id_ped=art.id_art WHERE ped.id_ped=1;</sql><sql name="CONSULTA_NO15.sql">/*Visualizar el nombre del cliente, la fecha y el valor del pedido mas costos*/
+SELECT cli.nom_cli,ped.fec_ped,max(ped.val_ped) as val_ped
+FROM tb_cliente as cli LEFT JOIN tb_pedido as ped
+on cli.id_cli=ped.id_cli;</sql><sql name="CONSULTA_NO16.sql">SELECT edi_art,count(*) as numArticulo_art FROM tb_articulo 
+GROUP by edi_art;</sql><sql name="CONSULTA_NO17.sql">/*Mostrar los pedidos con los respectivos articulos (codigo, nombre, valor
+y cantidad pedida)*/
+
+SELECT art.id_art,tit_art,pre_art,artped.cantidadArticulo_artp,
+artped.valorVentaArticulo_artp FROM tb_articuloPedido as artped
+INNER JOIN tb_articulo as art on artped.id_art=art.id_art GROUP by art.id_art;</sql><sql name="CONSULTA_NO18.sql">/*Visualizar todos los clientes organizados por apellidos*/
+SELECT * FROM tb_cliente GROUP by ape_cli;</sql><sql name="CONSULTA_NO19.sql">/*Visualizar todos los articulos organizados por autor*/
+SELECT * from tb_articulo GROUP by aut_art;</sql><sql name="CONSULTA_NO20.sql">/*Visualizar los pedidos que se han realizado para el articulo con id 2,
+el listado debe mostrar el nombre y direccion del cliente, el 
+ numero de pedido y cantidad solicitada*/
+ 
+ SELECT cli.nom_cli,cli.ape_cli,cli.dir_cli,artped.id_ped, artped.cantidadArticulo_artp
+ FROM tb_articuloPedido as artped INNER JOIN tb_pedido as ped
+ on artped.id_ped=ped.id_ped INNER JOIN tb_cliente as cli
+ on ped.id_cli=cli.id_cli WHERE artped.id_art=2;</sql><sql name="CONSULTA_NO21.sql">/*Visualizar los datos de las empresas fundadas entre el año 1991 y 1998*/
+SELECT * FROM tb_compañia WHERE añoFundacion_comp BETWEEN 1991 and 1998;</sql><sql name="CONSULTA_NO22.sql">/*Listar todos los datos de los automotores cuya poliza expira en
+septiembre de 2013, es reporte debe visualizar la placa, el modelo, la marca,
+numero de pasajeros, cilindraje, nombre de automotor, el valor de la poliza
+y el valor asegurado*/
+
+SELECT aut.placa_aut,aut.modelo_aut,aut.marca_aut,aut.pasajeros_aut,
+aut.cilindraje_aut, tpaut.nombre_aut, ase.valorAseguradora_ase,
+ase.costo_ase FROM tb_automotores as aut INNER JOIN tb_tipoAutomotores as tpaut
+on aut.tipo_aut=tpaut.tipo_aut INNER JOIN tb_aseguramientos as ase
+on aut.placa_aut=ase.placa_aut;</sql><sql name="CONSULTA_NO23.sql">/*Visualizar los datos de los incidentes ocurridos el 30 de septiembre de 
+2012, con su respectivo numero de poliza, fecha de inicio de la poliza,
+valor asegurado y valor de la poliza*/
+
+SELECT inc.codigo_inc,inc.fecha_inc,inc.placa_aut,inc.lugar_inc,inc.heridos_inc
+,inc.fatalidades_inc,inc.involucrados_inc, ase.codigo_ase,ase.fechaInicio_ase,
+ase.valorAseguradora_ase, ase.costo_ase FROM tb_aseguramientos as ase 
+LEFT JOIN tb_incidentes as inc on ase.placa_aut=inc.placa_aut WHERE 
+inc.fecha_inc='2012-09-30';</sql><sql name="CONSULTA_NO24.sql">/*Vizsualizar los datos de los incidentes un (1) herido, este reporte
+debe visualizar la placa del automotor, con los respectivos datos de la poliza
+como son fecha de inicio, valor, estado y valor asegurado*/
+ 
+SELECT inc.codigo_inc,inc.fecha_inc,inc.placa_aut,inc.lugar_inc,inc.heridos_inc
+,inc.fatalidades_inc,inc.involucrados_inc, inc.placa_aut, ase.fechaInicio_ase,
+ase.costo_ase, ase.estado_ase, ase.valorAseguradora_ase FROM tb_incidentes
+as inc LEFT JOIN tb_aseguramientos as ase on inc.placa_aut=ase.placa_aut
+WHERE inc.heridos_inc=1;</sql><sql name="CONSULTA_NO25.sql">/*Visualizar todos los datos de la poliza mas costoza*/
+SELECT codigo_ase,fechaInicio_ase,fechaExpiracion_ase,max(valorAseguradora_ase)
+as valorAseguradora_ase,estado_ase,costo_ase,placa_aut
+FROM tb_aseguramientos;</sql><sql name="CONSULTA_NO26.sql">/*Visualizar los incidentes con el minimo numero de autos involucrados,
+de este incidente visualizar el estado de la poliza y el valor
+asegurado*/
+select inc.codigo_inc, inc.fecha_inc, inc.placa_aut, inc.lugar_inc, inc.heridos_inc
+, inc.fatalidades_inc, min(inc.involucrados_inc) as involucrados_inc, 
+ase.estado_ase, ase.valorAseguradora_ase FROM tb_incidentes as inc 
+left JOIN tb_aseguramientos as ase on inc.placa_aut=ase.placa_aut;</sql><sql name="CONSULTA_NO27.sql">/*Visualizar los incidentes del vehiculo con placas &quot;FLL420&quot;, este reporte
+debe visualizar la fecha, el lugar, la cantidad de heridos del incidente,
+la fecha de inicio, la fecha de expiracion de la poliza y el valor aseguradora.*/
+
+SELECT inc.fecha_inc,inc.lugar_inc,inc.heridos_inc, ase.fechaInicio_ase,
+ase.fechaExpiracion_ase,ase.valorAseguradora_ase FROM tb_incidentes as inc
+left JOIN tb_aseguramientos as ase on inc.placa_aut=ase.placa_aut 
+WHERE inc.placa_aut ='FLL420';</sql><sql name="CONSULTA_NO28.sql">/*Visualizar los datos de la empresa con nit 899999999-5*/
+
+SELECT * FROM tb_compañia WHERE nit_comp='899999999-5';</sql><sql name="CONSULTA_NO29.sql">/*Visualizar los datos de la poliza cuyo valor asegurado es el mas costoso
+, este reporte ademas de visualizar todos los datos de la poliza, debe
+presentar todos los datos del vehiculo que tien dicha poliza*/
+
+SELECT ase.codigo_ase, ase.fechaInicio_ase, ase.fechaExpiracion_ase,
+max(ase.valorAseguradora_ase) as valorAseguradora_ase, ase.estado_ase,
+ase.costo_ase, aut.placa_aut, aut.marca_aut, aut.tipo_aut, aut.modelo_aut,
+aut.pasajeros_aut, aut.cilindraje_aut, aut.chasis_aut FROM tb_aseguramientos
+as ase LEFT JOIN tb_automotores as aut on ase.placa_aut=aut.placa_aut;</sql><sql name="CONSULTA_NO30.sql">/*Visualizar los datos de las polizas de los automotores tipo 1,
+este reporte debe incluir placa, marca, modelo, cilindraje del vehiculo junto
+con la fecha de inicio, de finalizacion y estado de la poliza*/
+
+select aut.placa_aut, aut.marca_aut, aut.modelo_aut, aut.cilindraje_aut,
+ase.fechaInicio_ase, ase.fechaExpiracion_ase, ase.estado_ase FROM
+tb_automotores as aut LEFT JOIN tb_aseguramientos as ase
+on aut.placa_aut=ase.placa_aut WHERE aut.tipo_aut=1;</sql><current_tab id="29"/></tab_sql></sqlb_project>
