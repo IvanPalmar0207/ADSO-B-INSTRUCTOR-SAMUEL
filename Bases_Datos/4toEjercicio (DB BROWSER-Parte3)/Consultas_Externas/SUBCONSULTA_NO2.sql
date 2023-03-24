@@ -1,0 +1,1 @@
+SELECT * FROM (SELECT CompanyName FROM Customers WHERE CustomerID BETWEEN 1 AND 10);

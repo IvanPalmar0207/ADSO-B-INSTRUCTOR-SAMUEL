@@ -1,0 +1,1 @@
+SELECT avg(UnitsInStock) as AVGUnitsInStock from Products ;
