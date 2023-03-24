@@ -1,0 +1,1 @@
+SELECT Id_res, Id_usu, sum (ValorTotal_res) FROM tb_reserva GROUP by tb_reserva.Id_res

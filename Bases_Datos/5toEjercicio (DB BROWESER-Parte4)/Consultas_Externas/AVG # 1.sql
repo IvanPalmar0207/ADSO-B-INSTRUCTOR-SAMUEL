@@ -1,0 +1,1 @@
+SELECT  avg (ValorTotal_fac) as "Promedio de las Reservas" FROM tb_facturacion

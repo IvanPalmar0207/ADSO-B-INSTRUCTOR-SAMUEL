@@ -1,0 +1,1 @@
+SELECT Id_usu, id_fac, min (ValorTotal_fac) as "Vl Factura Mínima" FROM tb_facturacion 

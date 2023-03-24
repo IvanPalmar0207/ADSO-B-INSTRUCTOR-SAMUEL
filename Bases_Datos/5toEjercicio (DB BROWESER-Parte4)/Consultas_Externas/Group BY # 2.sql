@@ -1,0 +1,1 @@
+SELECT Nombre_usu, Apellido_usu, Email_usu FROM tb_usuario GROUP BY tb_usuario.Id_usu

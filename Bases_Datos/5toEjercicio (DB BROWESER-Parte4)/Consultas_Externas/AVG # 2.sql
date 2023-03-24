@@ -1,0 +1,1 @@
+SELECT  avg (ValorTotal_res) as "Promedio Total de las Reservas" FROM tb_reserva

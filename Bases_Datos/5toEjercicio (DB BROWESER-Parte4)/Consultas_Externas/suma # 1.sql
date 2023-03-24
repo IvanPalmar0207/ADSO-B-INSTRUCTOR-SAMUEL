@@ -1,0 +1,1 @@
+SELECT Id_usu, id_fac, sum(ValorTotal_fac) FROM tb_facturacion GROUP by tb_facturacion.Id_usu

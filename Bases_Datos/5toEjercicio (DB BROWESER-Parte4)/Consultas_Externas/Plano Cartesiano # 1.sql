@@ -1,0 +1,1 @@
+SELECT * FROM tb_reserva as res, tb_usuario as usu WHERE res.Id_usu = usu.Id_usu

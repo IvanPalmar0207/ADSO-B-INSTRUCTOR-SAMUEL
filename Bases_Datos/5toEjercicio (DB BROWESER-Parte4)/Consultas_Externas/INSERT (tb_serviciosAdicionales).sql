@@ -1,0 +1,16 @@
+INSERT INTO tb_serviciosAdicionales (TipoServicio_serv,Precio_serv) VALUES 
+('Minibar',1300000),
+('Jacuzzi',1300000),
+('Restaurante',1300000),
+('Bar',1400000),
+('Snacks',1300000),
+('Discoteca',1300000),
+('Sauna',2000000),
+('Piscina',300000),
+('Billar',400000),
+('Gymnasio',500000),
+('Caja Fuerte',300000),
+('Parqueadero',900000),
+('Servicio Puerta a Puerta',700000),
+('Tour por las instalaciones',800000),
+('Lavanderia',100000);

@@ -1,0 +1,1 @@
+SELECT Id_usu, Id_res, MAX (ValorTotal_res) as "Vl Reserva Mínima" FROM tb_reserva

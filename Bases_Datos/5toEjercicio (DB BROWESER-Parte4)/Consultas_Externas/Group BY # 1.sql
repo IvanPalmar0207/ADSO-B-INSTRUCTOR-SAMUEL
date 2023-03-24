@@ -1,0 +1,1 @@
+SELECT * FROM tb_habitaciones GROUP BY tb_habitaciones.Id_res

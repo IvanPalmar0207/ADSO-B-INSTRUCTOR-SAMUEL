@@ -1,0 +1,1 @@
+SELECT Id_res, FechaLlegada_res, FechaSalida_res, Nombre_usu, Apellido_usu, ValorTotal_res FROM tb_reserva, tb_usuario WHERE tb_reserva.Id_usu = tb_usuario.Id_usu

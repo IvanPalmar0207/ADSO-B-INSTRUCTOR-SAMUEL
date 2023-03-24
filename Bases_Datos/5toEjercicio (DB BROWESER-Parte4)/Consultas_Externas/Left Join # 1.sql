@@ -1,0 +1,1 @@
+SELECT * FROM tb_usuario LEFT JOIN tb_tipoUsuario on tb_usuario.Id_TpU = tb_tipoUsuario.Id_TpU

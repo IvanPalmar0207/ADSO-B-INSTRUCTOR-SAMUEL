@@ -1,0 +1,1 @@
+SELECT Tipo_hab, PrecioHabitacion_hab, CantidadHabitaciones_hab FROM tb_habitacion INNER JOIN tb_habitaciones on tb_habitacion.IdTipoHabitacion_hab = tb_habitaciones.IdTipoHabitacion_hab

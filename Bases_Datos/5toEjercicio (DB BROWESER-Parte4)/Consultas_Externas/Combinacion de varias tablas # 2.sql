@@ -1,0 +1,1 @@
+SELECT usu.Id_usu, res.Id_res, fac.id_fac, fac.ValorTotal_fac FROM tb_usuario as usu INNER JOIN tb_reserva as res on usu.Id_usu = res.Id_usu INNER JOIN tb_facturacion as fac on usu.Id_usu = fac.Id_usu
