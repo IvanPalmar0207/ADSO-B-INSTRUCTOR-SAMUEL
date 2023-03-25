@@ -4,17 +4,6 @@ import string
 from time import pthread_getcpuclockid
 from tkinter import N
 
-
-print('!HOLA, MUNDO!')
-print()
-print('IVAN DAVID PALMAR MARTINEZ')
-print()
-print('HOLA HIJUEPUTAS') 
-print()
-print('SAPOS GONORREAS') 
-print()
-print('MALPARIDOS')
-
 print("La witsi witsi araña\nsubio a su telaraña.\n")
 print()
 print('Vino la lluvia y\nse la llevo.\n')
