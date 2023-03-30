@@ -1,5 +1,5 @@
 import sqlite3 #Se hace uso de la palabra reservada import que sirve para importar un modulo o un paquete, en este caso se hara una importacion de un paquete llamado sqlite3 que sirve para la manipulacion de bases de datos serverless(sin servidor) creadas en sqlite3.
-con=sqlite3.connect('C:\\narvaez\\db\\conpython.db') #Se instancia un nuevo objeto para el modulo sqlite3 
-print(type(con))
-micursor=con.cursor()
-print(type(micursor))
+con=sqlite3.connect('C:\\narvaez\\db\\conpython.db') #Se instancia un nuevo objeto para el modulo sqlite3 llamado con, con el metodo connect que sirve para conectar un archivo de python con sqlite3, este metodo siempre pide un parametro el cual sera la ruta en donde se encuentra la base de datos ya sea una ruta absoluta o la ruta relativa, en este caso se le pasa la ruta relativa de la base de datos que se encuentra en el disco C de la maquina.
+print(type(con)) #Se utiliza el print que sirve para mostrar diferentes resultados en pantalla, se utiliza la funcion type que pide como parametro cualquier dato para mostrar en pantalla a que clase pertenece dicho dato, en este caso se le pasa el objeto con que es de la clase connect.
+micursor=con.cursor() #Despues se crea una nueva varible local que es micursor, esta tiene como contenido el flujo de informacion entre la base de datos y este archivo de python el cual es con, que tiene un metodo que es cursor() el cual sirve para moverse dentro de la base de datos en el mismo archivo de python haciendo consultas de la base de datos.
+print(type(micursor)) #Se utiliza el print que sirve para mostrar diferentes resultados en pantalla, se hace uso de la funcion type la cual nos permite identificar a que clase pertenece un dato y esta funcion pide un parametro, se le pasa en esta ocasion la variable u objeto micursor, y por ultimo saldra en pantalla que typo de datos es y su tipo de clase es cursor.

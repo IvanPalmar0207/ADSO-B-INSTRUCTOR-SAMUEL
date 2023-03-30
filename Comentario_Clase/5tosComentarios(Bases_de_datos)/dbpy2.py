@@ -1,31 +1,28 @@
+import sqlite3 #Se hace uso de la palabra reservada import que sirve para importar un modulo o paquete, en este caso es el paquete de sqlite3 que sirve para realizar la manipulacion de bases de datos serverless(sin servidor) desde el mismo python.
 
-import sqlite3
+with sqlite3.connect('C:\\Users\\SENA\\Documents\\ivan_palmar\\ADSO-B-INSTRUCTOR-SAMUEL\\Comentario_Clase\\5tosComentarios(Bases_de_datos)\\conpython.db') as con:  #Se hace uso de la palabra reservada with que sirve como en los archivos para crear un bloque de codigo para la manipulacion de la base de datos en este caso, se le pasa el nombre del modulo sqlite3 con el metodo connect que sirve para hacer la conexion de la base de datos serverless con python este metodo pide un parametro que es la ruta absoluta o relativa de la base de datos de sqlite3, en este caso se le pasa la ruta relativa y despues va la palabra reservada as que sirve para ponerle un alias a lo que viene anterior a el en este caso la ruta y la conexion, el alias de la conexion es con.
+    micursor=con.cursor()  #Despues se crea una nueva varible local que es micursor, esta tiene como contenido el flujo de informacion entre la base de datos y este archivo de python el cual es con, que tiene un metodo que es cursor() el cual sirve para moverse dentro de la base de datos en el mismo archivo de python haciendo consultas de la base de datos.
+    sentencia="SELECT id,nombre,apellido FROM alumno WHERE id>=400;" #Se crea una nueva variable sql que es sentencia que tiene como contenido una sentencia sql que en este caso sera "SELECT id,nombre,apellido FROM alumno WHERE id>=400;" donde se seleccionara el id, nombre y apellido de la tabla alumno donde el id sea mayor a 400, osea mostrara los ultimos 100 registros ya que son 500 registros.
 
-with sqlite3.connect('C:\\Users\\SENA\\Documents\\ivan_palmar\\ADSO-B-INSTRUCTOR-SAMUEL\\Comentario_Clase\\5tosComentarios(Bases_de_datos)\\conpython.db')as con:
-    micursor=con.cursor()
-    sentencia="SELECT id,nombre,apellido FROM alumno WHERE id>=400;"
-    #print(micursor.execute(sentencia).fetchall())
+def select(conexion,tabla,campo,operador,dato): #Se hace uso de la palabra reservada def que sirve para crear funciones en python, seguidamente vendra el nombre de la funcion que 'select', despues los parentesis que indican los parametros que seran conexion,tabla,campo,operador y dato.
+    micursor=conexion.cursor() #Se crea una variable local llamada micursor que tiene como contenido el parametro conexion con el metodo sqlite3 cursor() que sirve para moverse dentro de la base de datos para realizar las diferentes consultas.
+    sentencia=f"SELECT * FROM {tabla} WHERE {campo}{operador}'{dato}'" #Se crea una variable local llamada sentencia que tiene como contenido primero una plantilla literal que sirvve para combinar numeros o los diferentes datos en una cadena sin la necesidad de las comas, la sentencia sql es "SELECT * FROM {tabla} WHERE {campo}{operador}'{dato}'" que seleccionara todo de la tabla que se le pase en el parametro despues a travez de una condicion WHERE evaluara el campo, el operador y el dato para mostrar los que coincidan con la condicion.
+    print(sentencia) #Se hace uso del print que sirve para mostrar resultados en consola en este caso, se le mostrara al usuario la sentencia tal cual se realizo pero ya con los parametros como un datos (f"SELECT * FROM {tabla} WHERE {campo}{operador}'{dato}'").
+    print(micursor.execute(sentencia).fetchall()) #Se hace uso del print que sirve para mostrar resultados en consola, se le pasa el objeto micursor con el metodo execute que sirve para ejecutar sentencias sql y siempre pide un parametro en este caso se le pasa la variable sentencia que es la que contiene la sentencia sql despues viene el metodo fetchall() que mostrara todos los resultados en pantalla.
+select(con,'alumno','email','=','dbrabon2@irs.gov') #Se llama la funcion select y sus parametros completados que seriviran para la ejecucion de la misma, los parametros son: con,'alumno','email','=' y 'dbrabon2@irs.gov'.
 
-def select(conexion,tabla,campo,operador,dato):
-    micursor=conexion.cursor()
-    sentencia=f"SELECT * FROM {tabla} WHERE {campo}{operador}'{dato}'"
-    print(sentencia)
-    print(micursor.execute(sentencia).fetchall())
+def modificar(conex,tabla,campo,dato,id): #Se hace uso de la palabra reservada def que sirve para crear funciones en python, seguidamente vendra el nombre de la funcion que 'select', despues los parentesis que indican los parametros que seran conexion,tabla,campo y dato.
+    micursor=conex.cursor() #Se crea una variable local llamada micursor que tiene como contenido el parametro conexion con el metodo sqlite3 cursor() que sirve para moverse dentro de la base de datos para realizar las diferentes consultas.
+    sentencia1=f'UPDATE {tabla} SET {campo}="{dato}" WHERE id={id}' #Se crea una variable local llamada sentencia1 que tiene como contenido primero una plantilla literal que sirvve para combinar numeros o los diferentes datos en una cadena sin la necesidad de las comas, la sentencia sql es f'UPDATE {tabla} SET {campo}="{dato}" WHERE id={id}' que actualizara la tabla que se le pase como parametro depues se le pasa el campo que se quiere cambiar y por ultimo la condicion que es el id que sera cambiado.
+    micursor.execute(sentencia1) #La variable local micursor con el metodo exxecute que sirve para ejecutar sentencias sql de la base de datos llamada en la parte superior con ruta absoluta o relactiva y pide un parametro este metodo, es este caso se le pasa la sentencia1 para que sea ejecutada.
+    con.commit() #Se usa la conexion (con) que hay entre la base de datos y el archivo de python con el metodo commit que sirve para comitiar o subir los cambios realizados con las diferentes sentencias que no son select.
+    print('Actualizacion Exitosa¡') #Finalmente cuando todas las acciones fueron ejecutadas se hace uso del print que muestra diferentes resultados en pantalla, este mostrara un mensaje que es 'Actualizacion Exitosa¡'.
+modificar(con,'alumno','nombre','Kakaroto',1) #Se llama la funcion modificar y sus parametros completados que seriviran para la ejecucion de la misma, los parametros son:con,'alumno','nombre','Kakaroto' y 1 . 
 
-select(con,'alumno','email','=','dbrabon2@irs.gov')
-
-def modificar(conex,tabla,campo,dato,id):
-    micursor=conex.cursor()
-    sentencia1=f'UPDATE {tabla} SET {campo}="{dato}" WHERE id={id}'
-    micursor.execute(sentencia1)
-    con.commit()
-    print('Actualizacion Exitosa¡')
-modificar(con,'alumno','nombre','Kakaroto',1)
-
-def eliminar(conex,table,campo,dato):
-    micursor=conex.cursor()
-    sentencia2=f'DELETE FROM {table} where {campo}={dato}'
-    micursor.execute(sentencia2)
-    con.commit()
-    print('Eliminacion Exitosa')
-eliminar(con,'alumno','id',2)
+def eliminar(conex,table,campo,dato): #Se hace uso de la palabra reservada def que sirve para crear funciones en python, seguidamente vendra el nombre de la funcion que 'select', despues los parentesis que indican los parametros que seran conexion,tabla,campo y dato.
+    micursor=conex.cursor() #Se crea una variable local llamada micursor que tiene como contenido el parametro conexion con el metodo sqlite3 cursor() que sirve para moverse dentro de la base de datos para realizar las diferentes consultas.
+    sentencia2=f'DELETE FROM {table} where {campo}={dato}'  #Se crea una variable local llamada sentencia1 que tiene como contenido primero una plantilla literal que sirvve para combinar numeros o los diferentes datos en una cadena sin la necesidad de las comas, la sentencia sql es f'DELETE FROM {table} where {campo}={dato}' que eliminara de la tabla seleccionada el campo donde la condicion sea verdadera.
+    micursor.execute(sentencia2) #La variable local micursor con el metodo exxecute que sirve para ejecutar sentencias sql de la base de datos llamada en la parte superior con ruta absoluta o relactiva y pide un parametro este metodo, es este caso se le pasa la sentencia2 para que sea ejecutada.
+    con.commit() #Se usa la conexion (con) que hay entre la base de datos y el archivo de python con el metodo commit que sirve para comitiar o subir los cambios realizados con las diferentes sentencias que no son select.
+    print('Eliminacion Exitosa') #Finalmente cuando todas las acciones fueron ejecutadas se hace uso del print que muestra diferentes resultados en pantalla, este mostrara un mensaje que es 'Eliminacion Exitosa¡'.
+eliminar(con,'alumno','id',2)  #Se llama la funcion eliminar y sus parametros completados que seriviran para la ejecucion de la misma, los parametros son: con,'alumno','id' y 2. 

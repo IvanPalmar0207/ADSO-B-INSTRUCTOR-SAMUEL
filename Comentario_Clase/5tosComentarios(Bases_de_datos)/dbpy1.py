@@ -1,8 +1,5 @@
-
-import sqlite3
-with sqlite3.connect('sqlitepython/conpython.db')as con:
-    micursor=con.cursor()
-    sentencia="SELECT nombre,apellido FROM alumno;"
-    print(micursor.execute(sentencia).fetchmany(10))
-
-#print()
+import sqlite3 #Se hace uso de la palabra reservada import que sirve para importar un modulo o paquete, en este caso es el paquete de sqlite3 que sirve para realizar la manipulacion de bases de datos serverless(sin servidor) desde el mismo python.
+with sqlite3.connect('sqlitepython/conpython.db')as con: #Se hace uso de la palabra reservada with que sirve como en los archivos para crear un bloque de codigo para la manipulacion de la base de datos en este caso, se le pasa el nombre del modulo sqlite3 con el metodo connect que sirve para hacer la conexion de la base de datos serverless con python este metodo pide un parametro que es la ruta absoluta o relativa de la base de datos de sqlite3, en este caso se le pasa la ruta relativa y despues va la palabra reservada as que sirve para ponerle un alias a lo que viene anterior a el en este caso la ruta y la conexion, el alias de la conexion es con.
+    micursor=con.cursor() #Despues se crea una nueva varible local que es micursor, esta tiene como contenido el flujo de informacion entre la base de datos y este archivo de python el cual es con, que tiene un metodo que es cursor() el cual sirve para moverse dentro de la base de datos en el mismo archivo de python haciendo consultas de la base de datos.
+    sentencia="SELECT nombre,apellido FROM alumno;" #Se crea una variable local que es sentencia, esta tendra en su contenido una sentencia sql como una cadena en este caso esta sentencia esta dirigida al contenido y a las tablas de la base de datos, la sentencia sql es "SELECT nombre,apellido FROM alumno;" que selecciona con la palabra reservada select el nombre y apellido de la tabla alumno sin ningun limite o restriccion.
+    print(micursor.execute(sentencia).fetchmany(10)) #Se hace del print que como muy bien se sabe se usa para mostrar resultados en consola, se usa el objeto micurso con el metodo execute que sirve para ejecutar sentencias sql y pide un parametro en este momento se le pasa la variable sentencia con el metodo fetchmanny que sirve para mostrar muchos pero pide un parametro que es un numero entero el cual en este caso es 10, esto quiere decir que de la consulta sql solo traera 10 resultados.

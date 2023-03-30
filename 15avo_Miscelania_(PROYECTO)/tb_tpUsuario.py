@@ -29,6 +29,6 @@ def updateId(conexion,tabla,nombre,id):
     goku.commit()
 updateId(goku,'tb_tipoUsuario','Saiyajin',1)
 
-def updateNombre():
+#def updateNombre():
 
-def deleteTU(:)
+#def deleteTU(:)

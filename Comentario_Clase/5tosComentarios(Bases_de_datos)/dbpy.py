@@ -1,14 +1,13 @@
-import sqlite3
-#con=sqlite3.connect('C:\\narvaez\\db\\conpython.db')
-con=sqlite3.connect('sqlitepython/conpython.db')
-print(type(con))
-micursor=con.cursor()
-print(type(micursor))
-sentencia="SELECT * from alumno;"
-micursor.execute(sentencia)
-for fila in micursor.fetchall():
-    print(fila[0])
-    print(fila[1])
-    print(fila[2])
-    print(fila[3])
-    print('-'*50)
+import sqlite3 ##Se hace uso de la palabra reservada import que sirve para importar un modulo o paquete, en este caso es el paquete de sqlite3 que sirve para realizar la manipulacion de bases de datos serverless(sin servidor) desde el mismo python. 
+con=sqlite3.connect('sqlitepython/conpython.db') #Se crea un objeto de la clase sqlite3 con el metodo connect que sirve para conectar una base de datos serverless con python, en este caso se le pasa la ruta relativa de dichas base de datos.
+print(type(con)) #Se utiliza el print que sirve para mostrar diferentes resultados en pantalla, se utiliza la funcion type que pide como parametro cualquier dato para mostrar en pantalla a que clase pertenece dicho dato, en este caso se le pasa el objeto con que es de la clase connect.
+micursor=con.cursor() #Despues se crea una nueva varible local que es micursor, esta tiene como contenido el flujo de informacion entre la base de datos y este archivo de python el cual es con, que tiene un metodo que es cursor() el cual sirve para moverse dentro de la base de datos en el mismo archivo de python haciendo consultas de la base de datos.
+print(type(micursor)) #Se utiliza el print que sirve para mostrar diferentes resultados en pantalla, se hace uso de la funcion type la cual nos permite identificar a que clase pertenece un dato y esta funcion pide un parametro, se le pasa en esta ocasion la variable u objeto micursor, y por ultimo saldra en pantalla que typo de datos es y su tipo de clase es cursor.
+sentencia="SELECT * from alumno;" #Se crea una nueva variable que es sentencia la cual tiene como contenido una sentencia sql como cadena que en este caso sera "SELECT * from alumno;" la cual seleccionara todos los campos y registros de la tabla alumno.
+micursor.execute(sentencia) #Se usa el objeto micursor con el metodo execute que sirve para ejecutar consultas sql y pide un parametro el cual sera en este caso la variable sentencia.
+for fila in micursor.fetchall(): #El for osea un ciclo con una variable propia que es fila, que iterara todos los registros y campos de la tabla alumno sin exepcion esto gracias al metodo fetchall que sirve para mostrar todos los campos de la consulta. 
+    print(fila[0]) #Se hace un print de la variable local fila en la posicion cero (0) esto da como resultado todos los id de los alumnos que fueron registrados en la tabla alumno. 
+    print(fila[1]) #Se hace un print de la variable local fila en la posicion uno (1) esto da como resultado todos los nombre de los alumnos que fueron registrados en la tabla alumno. 
+    print(fila[2]) #Se hace un print de la variable local fila en la posicion dos (2) esto da como resultado todos los documentos de los alumnos que fueron registrados en la tabla alumno. 
+    print(fila[3]) #Se hace un print de la variable local fila en la posicion cero (3) esto da como resultado todos los emails de los alumnos que fueron registrados en la tabla alumno. 
+    print('-'*50) #Se hace un ultimo print que imprime 50 "-" cada vez que se imprima un nuevo registro con sus respectivos 4 campos (id, nombre, documento, email).
