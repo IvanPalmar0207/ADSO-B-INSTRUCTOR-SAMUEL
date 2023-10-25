@@ -1,9 +1,12 @@
 from viruelaSimica import *
 
-#Numero de hombres contagiados
+#Casos de contagiados en Bogota
+print('-'*70)
+print('CASOS DE CONTAGIOS EN BOGOTA')
+print()
 contador = 0
-for i in response:
-    for j in i['nom_dep_not']:
-        if i['nom_dep_not'] == 'BOGOTA':
-            contador += 1
-print(contador)        
+for i in response: 
+    if i['nom_dep_not'] == 'BOGOTA':
+        contador += 1        
+print('El numero de casos de viruela simica en Bogota fue de',contador,'personas')
+print('-'*70)
