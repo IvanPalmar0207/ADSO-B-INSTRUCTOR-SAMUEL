@@ -7,20 +7,17 @@ data = response.json()
 #print(type(data))
 
 #Llenar la lista por comprension
-comprension = [(i,y) for i in data.keys() for y in data['data']]
+comprension = [clave['name'] for clave in data['data']]
+print(comprension)
 
 #Visualizacion del nombre en menos lineas de codigo
 nombreCiudades = []
 
-for key in data.keys():
-    for key1 in data['data']:
-        for i in key1:
-            resultado = key1['name']
-            nombreCiudades.append(resultado)
+for i in data['data']:
+    nombreCiudades.append(i['name'])
 
 #Visualizacion de datos dentro de la lista
 print(nombreCiudades)
-
 #Visualizacion de datos independientes
 for i in nombreCiudades:
-    print(i, end=', ')
+    print(i, end=' ')
