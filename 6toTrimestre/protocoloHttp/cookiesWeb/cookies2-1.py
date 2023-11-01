@@ -6,7 +6,7 @@ url = 'https://api.github.com/users'
 session = requests.Session()
 
 #Se hace la autentificacion a traves de usuario y contraseña0
-session.auth = ('palmar.ivan0205@gmail.com','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')
+session.auth = ('palmar.ivan0205@gmail.com','Teresa0205.')
 
 #Se llama la url a traves del metodo get pero de la sesion
 response = session.get(url)
