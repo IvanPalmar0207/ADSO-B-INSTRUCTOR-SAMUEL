@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!--Meta Datos-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--CDN deBootStrap 5-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!--CDN de los iconos de BootStrap 5-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!--Estilos de la pagina-->
+    <link rel="stylesheet" href="{% static 'css/actualizarMobiliario.css'%}">
+    <!--Icono de la pestaña-->
+    <link rel="shortcut icon" href="{% static 'img/python.png' %}" type="image/x-icon">
+    <!--Titulo de la Pestaña-->
+    <title>ACTUALIZAR MOBILIARIO</title>
+</head>
+
+<body>
+    <!--Encabezado de la pagina-->
+    <header>
+        <div class="logoIzquierdo">
+            <img src="{% static 'img/playa.png' %}" alt="logoIzquierda">
+        </div>
+        <h1 class="tituloEncabezado">Actualizar Mobiliario</h1>
+        <div class="logoIzquierdo">
+            <img src="{% static 'img/playa.png' %}" alt="logoIzquierda">
+        </div>
+    </header>
+
+    <!--Barra de navegacion-->
+    <div class="contenedorEnlaces">
+        <ul>
+            <li><a href="{% url "mobiliario" %}">Volver</a></li>
+        </ul>                
+    </div>
+    
+    <!--Formulario de registro-->
+    <section class="formRegistro">
+        <form class="container contenedor" method="POST" action="actualizarMobiliario/">{% csrf_token %}        
+
+            <div class="campo">
+                <label for="codigoMobiliario">Codigo Mobiliario:</label>
+                <input type="number" name="codigoMobiliario" id="camasSencillas" value="{{mobiliario.id}}" required>
+
+            </div>
+
+            <br>
+
+            <div class="campo">
+                <label for="codigoTipoHabitacion">Codigo Tipo Hab:</label>
+                <select class="input" name="codigoTipoHabitacion" id="tipoDoc" required>                
+                        <option value="{{mobiliario.codigo_tpH.codigo_tpH}}">{{mobiliario.codigo_tpH.codigo_tpH}} - {{mobiliario.codigo_tpH.tipo_tpH}}</option>
+                </select>
+            </div>
+
+            <br>
+
+            <div class="campo">
+                <label for="camasSencillas">No. Camas Sencillas:</label>
+                <input type="number" name="camasSencillas" id="camasSencillas" value ="{{mobiliario.camasSecillas_im}}" required>
+
+            </div>
+
+            <br>
+
+            <div class="campo">
+                <label for="camasDobles">No. Camas Dobles: </label>
+                <input type="number" name="camasDobles" id="camasDobles"  value ="{{mobiliario.camasDobles_im}}" required>
+            </div>
+
+            <br>
+
+            <div class="campo">
+                <label for="camasTriples">No. Camas Triples: </label>
+                <input type="number" name="camasTriples" id="camasTriples" value ="{{mobiliario.camasTriples_im}}" required>
+            </div>
+
+            <br>
+
+            <div class="campo">
+                <label for="camasMatrimoniales">No. Camas Matrimoniales: </label>
+                <input type="number" name="camasMatrimoniales" id="habitacionesDisponibles"  value ="{{mobiliario.camasMatrimoniales_im}}" required>
+            </div>
+
+            <br>
+
+            <div class="campo">
+                <label for="numeroTelevisor">No. Televisor: </label>
+                <input type="number" name="numeroTelevisor" id="habitacionesDisponibles" value ="{{mobiliario.televisor_im}}" required>
+            </div>
+
+            <br>
+
+            <div class="campo">
+                <label for="numeroBanos">No. Baños: </label>
+                <input type="number" name="numeroBanos" id="numeroBanos" value ="{{mobiliario.bano_im}}" required>
+            </div>
+
+            <br>
+
+            <div class="campo">
+                <label for="vnumeroEscritoriosalorBase">No. Escritorios: </label>
+                <input type="number" name="numeroEscritorios" id="numeroEscritorios" value ="{{mobiliario.escritorio_im}}" required>
+            </div>
+
+            <br>
+
+            <input class="boton" type="submit" value="Registrar">
+
+            <br>
+
+        </form>
+    </section>
+
+     <!--Footer y las redes sociales-->
+     <footer class="d-flex flex-column align-items-center justify-content-center">
+        <p class="footer-texto text-center">El SENA quiere brindarte la mejor estadia.
+            <br>Ven, comparte y disfruta en nuestro Hotel.</p>
+        <div class="iconos-redes-sociales d-flex flex-wrap align-items-center justify-content-center">
+            <a href="https://web.facebook.com/sena.soacha/?locale=es_LA&_rdc=1&_rdr" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-facebook"></i>
+            </a>
+            <a href="https://twitter.com/SENASoacha?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-twitter"></i>
+            </a>
+            <a href="https://senasoachacide.blogspot.com/" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-mortarboard-fill"></i>
+            </a>
+            <a href="mailto:servicioalciudadano@sena.edu.co " target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-envelope"></i>
+            </a>
+        </div>
+        <div class="derechos-de-autor">Creado por: Ivan David Palmar Martinez&#169;</div> 
+    </footer>
+
+</body>
+</html>

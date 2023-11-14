@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'img/python.png' %}" type="image/x-icon">
+    <title>REGISTRO CORRECTO</title>
+</head>
+<body>
+    <script type='text/javascript'>
+        alert('La operacion se ha realizado correctamente...');
+        window.location = '{% url 'home' %}';
+    </script>
+</body>
+</html>
