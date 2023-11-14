@@ -19,8 +19,11 @@ def insertarReserva(request):
         cantidadJovenes = request.POST['cantidadJovenes']
         cantidadAdultos = request.POST['cantidadAdultos']
         tipoHabitacion = tb_habitacion.objects.get(codigo_hab = request.POST['tipoHabitacion'])
-        
-        reserva = tb_reserva.objects.create(codigo_res = codigoRes1, numeroDocumento_cli = numeroDoc, fechaInicio_res = fechaLlegada, fechaSalida_res = fechaSalida, cantidadJovenes_res =cantidadJovenes, cantidadAdultos_res = cantidadAdultos, codigo_hab = tipoHabitacion)
+
+        if fechaLlegada<fechaSalida:        
+            reserva = tb_reserva.objects.create(codigo_res = codigoRes1, numeroDocumento_cli = numeroDoc, fechaInicio_res = fechaLlegada, fechaSalida_res = fechaSalida, cantidadJovenes_res =cantidadJovenes, cantidadAdultos_res = cantidadAdultos, codigo_hab = tipoHabitacion)
+        else:
+            return render(request, 'errorReserva.html')
 
     except Exception:
         return render(request, 'errorUsuario.html')
@@ -59,15 +62,17 @@ def actualizarReserva(request):
         cantidadJovenes = request.POST['cantidadJovenes']
         cantidadAdultos = request.POST['cantidadAdultos']
 
-        reserva = tb_reserva.objects.get(codigo_hab=codigoRes)
+        if fechaLlegada<fechaSalida:
+            reserva = tb_reserva.objects.get(codigo_hab=codigoRes)
+
+            reserva.fechaInicio_res = fechaLlegada
+            reserva.fechaSalida_res = fechaSalida
+            reserva.cantidadJovenes_res = cantidadJovenes
+            reserva.cantidadAdultos_res = cantidadAdultos
         
-        reserva.fechaInicio_res = fechaLlegada
-        reserva.fechaSalida_res = fechaSalida
-        reserva.cantidadJovenes_res = cantidadJovenes
-        reserva.cantidadAdultos_res = cantidadAdultos
-        
-        reserva.save()        
-    
+            reserva.save()        
+        else:
+            return render(request,'errorReserva.html')
     except Exception:
         return render(request, 'errorUsuario.html')
     else:
