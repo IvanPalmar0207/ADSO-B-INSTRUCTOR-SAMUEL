@@ -57,7 +57,7 @@ ROOT_URLCONF = 'crudProyecto.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/palma/OneDrive/Desktop/ADSO-B-INSTRUCTOR-SAMUEL/6toTrimestre/DjangoIvanPalmar/CRUDProyecto/templates'],
+        'DIRS': ['C:/Users/Aprendiz/Desktop/ADSO-B-INSTRUCTOR-SAMUEL/6toTrimestre/DjangoIvanPalmar/CRUDProyecto/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

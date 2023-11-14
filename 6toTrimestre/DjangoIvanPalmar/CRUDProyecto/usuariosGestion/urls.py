@@ -1,5 +1,5 @@
 from django.urls import path
-from usuariosGestion.views import registrarse,volver,registrarUsuario,verUsuarios,volverVer, eliminarUsuario,actualizaUsu, actualizarUsuario
+from usuariosGestion.views import registrarse,volver,registrarUsuario,verUsuarios,volverVer, eliminarUsuario,actualizaUsu, actualizarUsuario, iniciarSesion, iniciarSesionIngresar
 
 urlpatterns = [
     path('registrarse',registrarse,name='registrarse'),
@@ -9,5 +9,7 @@ urlpatterns = [
     path('volverVer', volverVer,name='volverVer'),
     path('eliminarUsuario/<numeroDoc>',eliminarUsuario),
     path('actualizaUsu/<numeroDoc>',actualizaUsu),
-    path('actualizaUsu/actualizarUsuario/',actualizarUsuario,name='actualizarUsuario')
+    path('actualizaUsu/actualizarUsuario/',actualizarUsuario,name='actualizarUsuario'),
+    path('iniciarSesion',iniciarSesion,name='iniciarSesion'),
+    path('iniciarSesionIngresar/',iniciarSesionIngresar,name='iniciarSesionIngresar')
 ]

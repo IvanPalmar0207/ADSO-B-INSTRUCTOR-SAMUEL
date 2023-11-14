@@ -83,3 +83,19 @@ def actualizarUsuario(request):
         return render(request, 'errorUsuario.html')
     else:
         return render(request, 'volverRegistro.html')
+    
+def iniciarSesion(request):
+    return render(request,'iniciarSesion.html')
+
+def iniciarSesionIngresar(request):
+    try:
+        numeroDoc = request.POST['numeroDoc']
+        email = request.POST['email']
+        contrasena = request.POST['contrasena']
+        
+        usuario = tb_usuarios.objects.get(numeroDocumento_cli=numeroDoc, correoElectronico_clI = email, contrasena_cli = contrasena)
+        
+    except Exception:
+        return render(request, 'errorUsuario.html')
+    else:
+        return render(request, 'paginaPrincipal.html')
