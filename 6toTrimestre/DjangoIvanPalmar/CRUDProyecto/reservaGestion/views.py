@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
-from reservaGestion.models import tb_reserva, tb_habitacion,tb_usuarios
-
+from reservaGestion.models import tb_reserva
+from habitacionesGestion.models import tb_habitacion
+from usuariosGestion.models import tb_usuarios
 # Create your views here.
 
 def reserva(request):
@@ -63,7 +64,7 @@ def actualizarReserva(request):
         cantidadAdultos = request.POST['cantidadAdultos']
 
         if fechaLlegada<fechaSalida:
-            reserva = tb_reserva.objects.get(codigo_hab=codigoRes)
+            reserva = tb_reserva.objects.get(codigo_res=codigoRes)
 
             reserva.fechaInicio_res = fechaLlegada
             reserva.fechaSalida_res = fechaSalida

@@ -1,14 +1,16 @@
 from django.urls import path
 from habitacionesGestion.views import inicioHabitaciones, volver, ingresarTipoHabitacion, verTipoHabitacion,eliminarTipoHabitacion, actualizaTipoHabitacion, actualizarTipoHabitacion, mobiliario, insertarMobiliario, mostrarMobiliario, eliminarMobiliario, actualizaMobiliario, actualizarMobiliario, habitaciones, insertarHabitaciones, mostrarHabitaciones,eliminarHabitaciones, actualizaHabitaciones, actualizarHabitaciones
+from django.views.decorators.csrf import csrf_exempt
+
 
 urlpatterns = [
     path('inicioHabitaciones',inicioHabitaciones, name='inicioHabitaciones'),
     path('volver',volver,name='volver'),
-    path('ingresarTipoHabitacion/',ingresarTipoHabitacion,name='ingresarTipoHabitacion'),
+    path('ingresarTipoHabitacion/',csrf_exempt(ingresarTipoHabitacion),name='ingresarTipoHabitacion'),
     path('verTipoHabitacion',verTipoHabitacion,name='verTipoHabitacion'),
-    path('eliminarTipoHabitacion/<codigo>',eliminarTipoHabitacion, name='eliminarTipoHabitacion'),
+    path('eliminarTipoHabitacion/<codigo>',csrf_exempt(eliminarTipoHabitacion), name='eliminarTipoHabitacion'),
     path('actualizaTipoHabitacion/<codigo>',actualizaTipoHabitacion, name='actualizaTipoHabitacion'),
-    path('actualizaTipoHabitacion/actualizarTipoHabitacion/',actualizarTipoHabitacion,name='actualizarTipoHabitacion'),
+    path('actualizaTipoHabitacion/actualizarTipoHabitacion/',csrf_exempt(actualizarTipoHabitacion),name='actualizarTipoHabitacion'),
     path('mobiliario',mobiliario, name='mobiliario'),
     path('insertarMobiliario/',insertarMobiliario,name='insertarMobiliario'),
     path('mostrarMobiliario',mostrarMobiliario,name='mostrarMobiliario'),

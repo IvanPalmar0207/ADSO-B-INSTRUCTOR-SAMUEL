@@ -88,7 +88,7 @@
             <div class="campo">
                 <label for="tipoHabitacion">Tipo de Habitacion:</label>
                 <select class="input" name="tipoHabitacion" id="tipoHabitacion" required>
-                {%for i in habitaciones%}
+                {%for i in habitaciones %}
                     <option value='{{i.codigo_hab}}'>{{i.codigo_tpH.tipo_tpH}}</option>
                 {% endfor %}          
                 </select>
