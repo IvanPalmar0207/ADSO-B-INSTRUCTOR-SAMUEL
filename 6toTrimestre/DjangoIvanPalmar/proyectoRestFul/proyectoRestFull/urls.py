@@ -16,11 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from proyectoRestFull.views import paginaPrincipal
+from proyectoRestFull.views import proyectoModuloApis
+from rest_framework.documentation import include_docs_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',paginaPrincipal,name='paginaPrincipal'),
+    path('',proyectoModuloApis,name='paginaPrincipal'),
     path('usuariosAPI/',include('usuariosAPI.urls')),
-    path('habitacionesAPI/',include('habitacionesGestion.urls'))
+    path('habitacionesAPI/',include('habitacionesGestion.urls')),
+    path('reservasAPI/', include('reservasAPI.urls')),
+    path('documentacion/',include_docs_urls(title='Documentacion de las APis'))
 ]

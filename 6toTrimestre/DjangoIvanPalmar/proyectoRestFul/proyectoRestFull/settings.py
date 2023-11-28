@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'usuariosAPI.apps.UsuariosapiConfig',
     'habitacionesGestion.apps.HabitacionesgestionConfig',
-    'rest_framework'
+    'reservasAPI.apps.ReservasapiConfig',
+    'rest_framework',
+    'coreapi'
 ]
 
 MIDDLEWARE = [
@@ -119,10 +121,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR
-STATICFILES_DIRS = ['proyectoRestFull/static']
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS':'rest_framework.schemas.coreapi.AutoSchema'
+}

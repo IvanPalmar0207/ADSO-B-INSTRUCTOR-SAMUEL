@@ -1,60 +1,35 @@
 from django.shortcuts import render, redirect
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework import viewsets
 from habitacionesGestion.serializer import tb_tipoHabitacionSerializer,tb_mobiliarioSerializer,tb_estadoSerializer, tb_habitacionSerializer
 from habitacionesGestion.models import tb_tipoHabitacion, tb_mobiliario, tb_estado, tb_habitacion
+from rest_framework import viewsets
 
 # Create your views here.
 
-def gestionHabitaciones(request):
-    return render(request,'gestionHabitaciones.html')
+class tipoHabitacionViewSet(viewsets.ModelViewSet):
+    queryset = tb_tipoHabitacion.objects.all()
+    serializer_class = tb_tipoHabitacionSerializer
+    
+class mobiliarioViewSet(viewsets.ModelViewSet):
+    queryset = tb_mobiliario.objects.all()
+    serializer_class = tb_mobiliarioSerializer
+    
+class estadoViewSet(viewsets.ModelViewSet):
+    queryset = tb_estado.objects.all()
+    serializer_class = tb_estadoSerializer
 
-#CRUD del tipo de Habitacion
+class habitacionViewSet(viewsets.ModelViewSet):
+    queryset = tb_habitacion.objects.all()
+    serializer_class = tb_habitacionSerializer
 
 @api_view(['GET'])
-def gestionTiposHabitacion(request):    
+def gestionApisHabitaciones(request):    
     apiUrl = {
-        "Todos los tipos de habitacion" : "/tipoHabitacionTodos/",
-        "Un solo tipo de habitacion" : "/tipoHabitacionUno/<id>",
-        "Crear un tipo de habitacion" : "/tipoHabitacionAgregar/",
-        "Actualizar un tipo de habitacion" : "/tipoHabitacionActualizar/<id>",
-        "Elimnar un tipo de habitacion" : "/tipoHabitacionEliminar/<id>"
+        "Api del tipo de habitacion" : "/tipoHabitacion/",
+        "Api del estado de la habitacion" : "/estadoHabitacion/",
+        "Api del mobiliario de la habitacion" : "/mobiliario/",
+        "Api de la Habitacion" : "/habitacion/"    
     }
     return Response(apiUrl)
-
-@api_view(['GET'])
-def tipoHabitacionTodos(request):
-    try:
-        tipoHabitacion = tb_tipoHabitacion.objects.all()
-        serializador = tb_tipoHabitacionSerializer(tipoHabitacion, many = True)
-    except Exception:
-        return redirect(gestionTiposHabitacion)
-    else:
-        return Response(serializador.data)
-    
-@api_view(['GET'])
-def tipoHabitacionUno(request,id):
-    try:
-        tipoHabitacion = tb_tipoHabitacion.objects.get(codigo_tpH=id)
-        serializador = tb_tipoHabitacionSerializer(tipoHabitacion, many = False)
-    except Exception:
-        return redirect(gestionTiposHabitacion)
-    else:
-        return Response(serializador.data)
-    
-@api_view(['POST'])
-def tipoHabitacionAgregar(request):
-    serializador = tb_tipoHabitacionSerializer(data = request.data)
-    if serializador.is_valid():
-        serializador.save()
-        return Response(serializador.data)
-    else:
-        return redirect(gestionTiposHabitacion)
-    
-#CRUD del mobiliario
-
-
-#CRUD del estado
-
-
-#CRUD de la Habitacion
