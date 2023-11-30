@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from habitacionesGestion.models import tb_estado, tb_habitacion, tb_mobiliario, tb_tipoHabitacion
+from habitacionesGestion.models import tb_estado, tb_habitacion, tb_mobiliario, tb_tipoHabitacion, tb_paqueteMobiliario
 
 class tb_estadoSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,4 +19,9 @@ class tb_mobiliarioSerializer(serializers.ModelSerializer):
 class tb_tipoHabitacionSerializer(serializers.ModelSerializer):
     class Meta:
         model = tb_tipoHabitacion
+        fields = '__all__'
+        
+class tb_paqueteMobiliarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = tb_paqueteMobiliario
         fields = '__all__'

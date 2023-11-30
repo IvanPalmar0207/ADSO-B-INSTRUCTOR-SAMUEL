@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'usuariosAPI.apps.UsuariosapiConfig',
     'habitacionesGestion.apps.HabitacionesgestionConfig',
     'reservasAPI.apps.ReservasapiConfig',
+    'APIservicios.apps.ApiserviciosConfig',
+    'APIfacturas.apps.ApifacturasConfig',
     'rest_framework',
     'coreapi'
 ]

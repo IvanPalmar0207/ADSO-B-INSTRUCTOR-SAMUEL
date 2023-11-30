@@ -25,5 +25,7 @@ urlpatterns = [
     path('usuariosAPI/',include('usuariosAPI.urls')),
     path('habitacionesAPI/',include('habitacionesGestion.urls')),
     path('reservasAPI/', include('reservasAPI.urls')),
+    path('APIservicios/', include('APIservicios.urls')),
+    path('APIfacturas/', include('APIfacturas.urls')),
     path('documentacion/',include_docs_urls(title='Documentacion de las APis'))
 ]

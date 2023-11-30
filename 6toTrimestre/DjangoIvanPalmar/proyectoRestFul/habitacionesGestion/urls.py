@@ -1,5 +1,5 @@
 from django.urls import path,include
-from habitacionesGestion.views import tipoHabitacionViewSet, mobiliarioViewSet, estadoViewSet, habitacionViewSet
+from habitacionesGestion.views import tipoHabitacionViewSet, mobiliarioViewSet, estadoViewSet, habitacionViewSet, paqueteMobiliariosViewSet
 from habitacionesGestion.views import gestionApisHabitaciones
 from rest_framework import routers
 
@@ -15,10 +15,14 @@ routerEstado.register(r'estadoHabitacion', estadoViewSet)
 routerHabitacion = routers.DefaultRouter()
 routerHabitacion.register(r'habitacion', habitacionViewSet)
 
+routerPaqueteMobiliario = routers.DefaultRouter()
+routerPaqueteMobiliario.register(r'paqueteMobiliario', paqueteMobiliariosViewSet)
+
 urlpatterns = [
     path('', gestionApisHabitaciones, name = 'gestionApisHabitaciones'),
     path('tipoHabitacion/',include(routerTipoHabitacion.urls)),
     path('mobiliario/',include(routerMobiliario.urls)),
     path('estadoHabitacion/', include(routerEstado.urls)),
-    path('habitacion/', include(routerHabitacion.urls))
+    path('habitacion/', include(routerHabitacion.urls)),
+    path('paqueteMobiliario/', include(routerPaqueteMobiliario.urls))
 ]

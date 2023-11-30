@@ -8,7 +8,7 @@ def proyectoModuloApis(request):
         "Gestion de Usuario" : "/usuariosAPI/",
         "Gestion de Habitaciones" : "/habitacionesAPI/",
         "Gestion de Reservas" : "/reservasAPI/",
-        "Gestion de Servicios" : "/serviciosAPI/",
-        "Gestion de Factura" : "/facturasAPI/"
+        "Gestion de Servicios" : "/APIservicios/",
+        "Gestion de Factura" : "/APIfacturas/"
     }
     return Response(apiUrl)
