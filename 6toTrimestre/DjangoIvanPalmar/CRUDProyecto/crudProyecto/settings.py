@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'usuariosGestion.apps.UsuariosgestionConfig',
     'habitacionesGestion.apps.HabitacionesgestionConfig',
-    'reservaGestion.apps.ReservagestionConfig'
+    'reservaGestion.apps.ReservagestionConfig',
+    'serviciosGestion.apps.ServiciosgestionConfig'
 ]
 
 MIDDLEWARE = [
@@ -124,8 +125,8 @@ STATICFILES_DIRS = ['crudProyecto/static']
 
 #Dinamic Media
 
-MEDIA_ROOT = BASE_DIR / 'multimedia'
-MEDIA_URL = '/multimedia/'
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
