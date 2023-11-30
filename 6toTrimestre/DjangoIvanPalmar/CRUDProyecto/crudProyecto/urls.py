@@ -25,5 +25,6 @@ urlpatterns = [
     path('',home,name='home'),
     path('gestion/',include('usuariosGestion.urls')),
     path('habitaciones/',include('habitacionesGestion.urls')),
-    path('reservas/',include('reservaGestion.urls'))
+    path('reservas/',include('reservaGestion.urls')),
+    path('servicios/',include('serviciosGestion.urls')),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
