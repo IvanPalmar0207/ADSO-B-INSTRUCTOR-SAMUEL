@@ -43,10 +43,12 @@ INSTALLED_APPS = [
     'APIservicios.apps.ApiserviciosConfig',
     'APIfacturas.apps.ApifacturasConfig',
     'rest_framework',
+    'corsheaders',
     'coreapi'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -55,6 +57,20 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+#Enable CORS
+CORS_ORIGIN_ALLOW_ALL = True
+#iF THIS IS USED cors_allowed
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8000',
+]
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    'http://localhost:8000',
+]
+CORS_ORIGIN_WHITELIST = (
+  'http://localhost:8000',
+)
 
 ROOT_URLCONF = 'proyectoRestFull.urls'
 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEGUNDO FETCH</title>
+</head>
+<body>
+    <h1>Tipos de Documento</h1>
+    <ul id="tiposDocumentos"></ul>
+
+    <script>
+        function createNode(element){
+            return document.createElement(element)
+        }
+
+        function append(parent, el){
+            return parent.appendChild(el)
+        }
+
+        const ul = document.getElementById('tiposDocumentos')
+
+        const url = 'http://127.0.0.1:8000/usuariosAPI/tipoDocumento/tipoDocumento/'
+
+        fetch(url)
+            .then((response) => response.json())
+            .then(function (data){
+                let tiposDocumentos = data;
+                return tiposDocumentos.map(function tipoDocumento(tipoDocumento){
+                    let li = createNode("li");
+                    let span = createNode("span");
+
+                    span.innerHTML = `El tipo de documento es: ${tipoDocumento.tipo_tpDD} <br>La abreviatura del tipo Doc es: ${tipoDocumento.abreviatura_tpD}`;
+                    append(li,span);
+                    append(ul,li);
+                    });
+                })
+                .catch(function(error) {
+                console.log(error);
+            });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEGUNDO FETCH</title>
+</head>
+<body>
+    <h1>Tipos de Documento</h1>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Codigo de Documento</th>
+            <th scope="col">Tipo de Documento</th>
+          </tr>
+        </thead>
+        <tbody id="tiposDocumentos">
+        </tbody>
+    </table>
+    <script>
+        function createNode(element){
+            return document.createElement(element)
+        }
+
+        function append(parent, el){
+            return parent.appendChild(el)
+        }
+
+        const tbody = document.getElementById('tiposDocumentos')
+
+        const url = 'http://127.0.0.1:8000/usuariosAPI/tipoDocumento/tipoDocumento/'
+
+        fetch(url)
+            .then((response) => response.json())
+            .then(function (data){
+                let tiposDocumentos = data;
+                return tiposDocumentos.map(function tipoDocumento(tipoDocumento){
+                    let tr = createNode("tr");
+                    let td = createNode("td");
+                    let td1 = createNode("td");
+                    td.innerHTML = `${tipoDocumento.codigo_tpD}`;
+                    td1.innerHTML = `${tipoDocumento.tipo_tpDD}`;
+                    append(tr,td);
+                    append(tr,td1);
+                    append(tbody,tr);
+                    });
+                })
+                .catch(function(error) {
+                console.log(error);
+            });
+    </script>
+
+</body>
+</html>
