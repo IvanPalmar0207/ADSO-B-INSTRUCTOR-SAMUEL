@@ -23,4 +23,3 @@ class tb_consumo(models.Model):
     fecha_con = models.DateTimeField(verbose_name = "Fecha del consumo", auto_now=False, auto_now_add=False)
     cantidad_con = models.IntegerField(verbose_name = "Cantidad consumida")
     precioUnitario_con = models.FloatField(verbose_name = "Precio unitario del producto")
-    

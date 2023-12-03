@@ -10,11 +10,11 @@
     <!--CDN de los iconos de BootStrap 5-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <!--Estilos de la pagina-->
-    <link rel="stylesheet" href="{% static 'css/inicioServicios.css' %}">
+    <link rel="stylesheet" href="{% static 'css/inicioFacturas.css' %}">
     <!--Icono de la pestaña-->
     <link rel="shortcut icon" href="{% static 'img/python.png' %}" type="image/x-icon">
     <!--Titulo de la Pestaña-->
-    <title>AGREGAR SERVICIOS</title>
+    <title>GESTION FACTURAS</title>
 </head>
 
 <body>
@@ -23,7 +23,7 @@
         <div class="logoIzquierdo">
             <img src="{% static 'img/playa.png' %}" alt="logoIzquierda">
         </div>
-        <h1 class="tituloEncabezado">Agregar Categoria</h1>
+        <h1 class="tituloEncabezado">Gestion de Facturas</h1>
         <div class="logoIzquierdo">
             <img src="{% static 'img/playa.png' %}" alt="logoIzquierda">
         </div>
@@ -33,46 +33,55 @@
     <div class="contenedorEnlaces">
         <ul>
             <li><a href="{% url 'volver' %}">Inicio</a></li>
-            <li><a href="{% url 'verCategorias' %}">Ver Categorias</a></li>                       
-            <li><a href="{% url 'ingresaServicios' %}">Gestion de Servicios</a></li>
-            <li><a href="{% url 'ingresarConsumos' %}">Gestion de Cosumos</a></li>
-        </ul>
+            <li><a href="{% url 'verFacturas' %}">Ver Facturas</a></li>                       
+        </ul>    
     </div>
 
     <!--Formulario de registro-->
     <section class="formRegistro">
-        <form class="container contenedor" method="post" action="insertarCategoria/">{% csrf_token %}
-
+        <form class="container contenedor" method="post" action="agregarFactura/">{% csrf_token %}
 
             <div class="campo">
-                <label for="codigoCategoria">Codigo de la Categoria:</label>
-                <input type="number" name="codigoCategoria" id="codigoCategoria" required>
+                <label for="codigoFactura">Codigo de la factura:</label>
+                <input type="number" name="codigoFactura" id="codigoFactura" required>
             </div>
 
             <br>
 
             <div class="campo">
-                <label for="nombreCategoria">Nombre de la Categoria </label>
-                <input type="text" name="nombreCategoria" id="nombreCategoria" required>
+                <label for="codigoReserva">Codigo de la reserva:</label>
+                <select class="input" name="codigoReserva" id="codigoReserva" required>                
+                    {% for i in reservas%}
+                        <option value="{{i.codigo_res}}">{{i.codigo_res}}</option>
+                    {% endfor %}
+                </select>
             </div>
 
             <br>
 
             <div class="campo">
-                <label for="descripcionCategoria">Descripcion de la Categoria:</label>
-                <input type="text" name="descripcionCategoria" id="descripcionCategoria" required>
+                <label for="metodoPago1">Metodo de pago:</label>
+                <select class="input" name="metodoPago1" id="metodoPago1" required>                
+                    {% for i in metodoPago %}
+                        <option value="{{i.codigo_mP}}">{{i.tipo_mP}}</option>
+                    {% endfor %}
+                </select>
             </div>
-
             <br>
 
             <div class="campo">
-                <label for="imagenCategoria">Imagen de la Categoria:</label>
-                <input type="file" name="imagenCategoria" id="imagenCategoria">
+                <label for="metodoPago2">Segundo metodo de pago(opcional)</label>
+                <select class="input" name="metodoPago2" id="metodoPago2">                
+                    {% for i in metodoPago %}
+                        <option value="vacio"></option>
+                        <option value="{{i.codigo_mP}}">{{i.tipo_mP}}</option>
+                    {% endfor %}
+                </select>
             </div>
-
+            
             <br>
 
-            <input class="boton" type="submit" value="Agregar">
+            <input class="boton" type="submit" value="Generar">
 
             <br>
         </form>

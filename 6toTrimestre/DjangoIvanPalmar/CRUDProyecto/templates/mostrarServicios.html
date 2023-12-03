@@ -12,7 +12,7 @@
     <!--Estilos Nativos-->
     <link rel="stylesheet" href="{% static 'css/verUsuarios.css' %}">
     <!--Titulo de la Pestaña-->
-    <title>VER CATEGORIAS</title>
+    <title>VER SERVICIOS</title>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
         <div class="logoIzquierdo">
             <img src="{% static 'img/playa.png' %}" alt="logoIzquierda">
         </div>
-        <h1 class="tituloEncabezado">Categorias - Hotel Pegasus</h1>
+        <h1 class="tituloEncabezado">Servicios - Hotel Pegasus</h1>
         <div class="logoIzquierdo">
             <img src="{% static 'img/playa.png' %}" alt="logoIzquierda">
         </div>
@@ -30,7 +30,7 @@
     <!--Opciones-->
     <ul>
         <li>
-            <a href="{% url 'inicioServicios' %}">Volver</a>
+            <a href="{% url 'ingresaServicios' %}">Volver</a>
         </li>        
     </ul>
 
@@ -38,23 +38,25 @@
         <br>
         <thead class="table-info table-bordered">                
                 <tr>
-                    <th scope='col'>Cod.Categoria</th>
-                    <th scope='col'>Nombre de la Categoria</th>
-                    <th scope='col'>Descripcion de la Categoria</th>
+                    <th scope='col'>Cod.Servicio</th>
+                    <th scope='col'>Nombre del servicio</th>
+                    <th scope='col'>Descripcion del servicio</th>
+                    <th scope='col'>Codigo de la categoria</th>                
                     <th scope='col'>Actualizar</th>
                     <th scope='col'>Eliminar</th>
                 </tr>
-            {% for i in categorias %}
+            {% for i in servicios %}
             </thead>
                 <tr>            
-                    <td>{{i.codigo_cat}}</td>
-                    <td>{{i.nombre_cat}}</td>
-                    <td>{{i.descripcion_cat}}</td>
+                    <td>{{i.codigo_ser}}</td>
+                    <td>{{i.nombre_ser}}</td>
+                    <td>{{i.descripcion_ser}}</td>
+                    <td>{{i.codigo_cat.codigo_cat}}</td>
                     <td>
-                        <a href="actualizaCategoria/{{i.codigo_cat}}"><img src="{% static "img/actualizar.png" %}" alt="imagenActualizar" width="30px"></a>
+                        <a href="actualizaServicio/{{i.codigo_ser}}"><img src="{% static "img/actualizar.png" %}" alt="imagenActualizar" width="30px"></a>
                     </td>
                     <td>
-                        <a href="eliminarCategoria/{{i.codigo_cat}}"><img src="{% static "img/eliminar.png"%}" alt="imagenEliminar" width='30px'></a>                
+                        <a href="eliminarServicio/{{i.codigo_ser}}"><img src="{% static "img/eliminar.png"%}" alt="imagenEliminar" width='30px'></a>                
                     </td>
                 </tr>
             {% endfor %}
