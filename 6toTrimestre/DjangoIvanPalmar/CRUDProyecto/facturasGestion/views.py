@@ -10,14 +10,14 @@ def inicioFacturas(request):
     consumo = tb_consumo.objects.filter(codigo_res = 10)
     
     contexto = {
-        'metodoPago' : metodoPago
+        'metodoPago' : metodoPago,
+        'reservas' : reservas
     }
     
     return render(request, 'inicioFacturas.html', contexto)
 
 def agregarFactura(request):
     try:
-        codigoFactura = request.POST['codigoFactura']
         codigoReserva = tb_reserva(codigo_res = request.POST['codigoReserva'])
         metodoPago1 = request.POST['metodoPago1']
         metodoPago2 = request.POST['metodoPago2']
@@ -29,13 +29,13 @@ def agregarFactura(request):
             precio += i.precioUnitario_con * i.cantidad_con
 
         if metodoPago2 == "vacio":
-            factura = tb_factura.objects.create(codigo_fac = codigoFactura, codigo_res = codigoReserva, valorTotal_fac = precio)
+            factura = tb_factura.objects.create(codigo_res = codigoReserva, valorTotal_fac = precio)
             factura.codigo_mP.add(metodoPago1)
             for i in consumo:
                 factura.numero_con.add(i.numero_con)
             factura.save()
         else:
-            factura = tb_factura.objects.create(codigo_fac = codigoFactura, codigo_res = codigoReserva, valorTotal_fac = precio)
+            factura = tb_factura.objects.create(codigo_res = codigoReserva, valorTotal_fac = precio)
             factura.codigo_mP.add(metodoPago1)
             factura.codigo_mP.add(metodoPago2)        
             for i in consumo:
