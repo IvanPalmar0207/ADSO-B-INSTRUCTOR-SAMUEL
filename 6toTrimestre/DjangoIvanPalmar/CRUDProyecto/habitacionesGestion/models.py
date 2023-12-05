@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class tb_tipoHabitacion(models.Model):
-    codigo_tpH = models.IntegerField(primary_key=True,default=0, verbose_name='Codigo del tipo de habitacion')
+    codigo_tpH = models.AutoField(primary_key=True, verbose_name='Codigo del tipo de habitacion')
     tipo_tpH = models.CharField(max_length=70,verbose_name='Tipo de habitacion')
     valorBase_tpH = models.FloatField(verbose_name='Valor base del tipo de habitacion')
 

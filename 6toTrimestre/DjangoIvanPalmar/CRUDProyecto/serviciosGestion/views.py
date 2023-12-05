@@ -10,12 +10,11 @@ def inicioServicios(request):
 
 def insertarCategoria(request):
     try:
-        codigoCategoria = request.POST['codigoCategoria']
         nombreCategoria = request.POST['nombreCategoria']
         descripcionCategoria = request.POST['descripcionCategoria']
         imagenCategoria = request.POST['imagenCategoria']
         
-        categoria = tb_categoria.objects.create(codigo_cat = codigoCategoria, nombre_cat = nombreCategoria, descripcion_cat = descripcionCategoria, imagen_cat = imagenCategoria)
+        categoria = tb_categoria.objects.create(nombre_cat = nombreCategoria, descripcion_cat = descripcionCategoria, imagen_cat = imagenCategoria)
         
     except Exception:
         return render(request,'errorUsuario.html')
@@ -79,13 +78,12 @@ def ingresaServicios(request):
 
 def insertarServicios(request):
     try:
-        codigoServicio = request.POST['codigoServicio']
         nombreServicio = request.POST['nombreServicio']
         descripcionServicio = request.POST['descripcionServicio']
         imagenServicio = request.POST['imagenServicio']
         codigoCategoria = tb_categoria.objects.get(codigo_cat=request.POST['codigoCategoria'])
         
-        servicio = tb_servicio.objects.create(codigo_ser = codigoServicio, nombre_ser = nombreServicio, descripcion_ser = descripcionServicio, imagen_ser = imagenServicio, codigo_cat = codigoCategoria)
+        servicio = tb_servicio.objects.create(nombre_ser = nombreServicio, descripcion_ser = descripcionServicio, imagen_ser = imagenServicio, codigo_cat = codigoCategoria)
         
     except Exception:
         return render(request,'errorUsuario.html')

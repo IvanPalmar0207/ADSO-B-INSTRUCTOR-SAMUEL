@@ -4,13 +4,13 @@ from reservaGestion.models import tb_reserva
 # Create your models here.
 
 class tb_categoria(models.Model):
-    codigo_cat = models.IntegerField(primary_key=True,  default = 1, verbose_name = 'Codigo de la categoria')
+    codigo_cat = models.AutoField(primary_key=True, verbose_name = 'Codigo de la categoria')
     nombre_cat = models.CharField(max_length=70, verbose_name = 'Nombre de la categoria')
     descripcion_cat = models.TextField(verbose_name = 'Descripcion de la categoria')
     imagen_cat = models.ImageField(verbose_name = 'Imagen de la categoria',upload_to='media', height_field=None, width_field=None, max_length=None)
     
 class tb_servicio(models.Model):
-    codigo_ser = models.IntegerField(primary_key =True,verbose_name = 'Codigo del servicio')
+    codigo_ser = models.AutoField(primary_key =True,verbose_name = 'Codigo del servicio')
     nombre_ser = models.CharField(max_length=70, verbose_name = 'Nombre del servicio o producto')
     descripcion_ser = models.TextField(verbose_name = 'Descripcion del servicio')
     imagen_ser = models.ImageField(verbose_name = 'Imagen del servicio',upload_to=None, height_field=None, width_field=None, max_length=None)    

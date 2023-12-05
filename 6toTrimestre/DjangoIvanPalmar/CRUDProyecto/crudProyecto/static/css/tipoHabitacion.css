@@ -84,11 +84,11 @@ li a:hover{
 
 .contenedor{
     width: 550px;
-    height: 280px;
+    height: 240px;
     padding: 10px;
     padding-top: 50px;
-   background-color:  #dafff2;
-   color: black;
+    background-color:  #dafff2;
+    color: black;
     max-width: 600px;
     text-align: center;
     border-radius: 20px;

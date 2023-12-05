@@ -11,10 +11,9 @@ def volver(request):
 
 def ingresarTipoHabitacion(request):
     try:
-        codigoTipoHabitacion = request.POST['codigoTipoHabitacion']
         tipoHabitacion = request.POST['tipoHabitacion']
         valorBase = request.POST['valorBase']
-        habitacion = tb_tipoHabitacion.objects.create(codigo_tpH = codigoTipoHabitacion, tipo_tpH = tipoHabitacion, valorBase_tpH = valorBase)
+        habitacion = tb_tipoHabitacion.objects.create(tipo_tpH = tipoHabitacion, valorBase_tpH = valorBase)
     except Exception:
         return render(request, 'errorUsuario.html')
     else:

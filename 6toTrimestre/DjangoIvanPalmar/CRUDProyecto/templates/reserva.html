@@ -41,15 +41,8 @@
 
     <!--Formulario de registro-->
     <section class="formRegistro">
-        <form class="container contenedor" method="POST" action="insertarReserva/">{% csrf_token %}
-
-            <div class="campo">
-                <label for="codigoRes">Codigo de la reserva:</label>
-                <input type="number" name="codigoRes" id="codigoRes" required>
-            </div>
-
-            <br>
-
+        <form class="contenedor" method="POST" action="insertarReserva/">{% csrf_token %}
+            
             <div class="campo">
                 <label for="numeroDoc">Numero de Documento:</label>
                 <input type="number" name="numeroDoc" id="numeroDoc" required>

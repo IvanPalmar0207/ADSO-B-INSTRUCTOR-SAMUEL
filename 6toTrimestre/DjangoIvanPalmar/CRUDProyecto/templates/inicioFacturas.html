@@ -66,8 +66,8 @@
             <div class="campo">
                 <label for="metodoPago2">Segundo metodo de pago(opcional)</label>
                 <select class="input" name="metodoPago2" id="metodoPago2">                
+                    <option value="vacio"></option>
                     {% for i in metodoPago %}
-                        <option value="vacio"></option>
                         <option value="{{i.codigo_mP}}">{{i.tipo_mP}}</option>
                     {% endfor %}
                 </select>

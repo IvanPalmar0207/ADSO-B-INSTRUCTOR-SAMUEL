@@ -40,15 +40,6 @@
     <!--Formulario de registro-->
     <section class="formRegistro">
         <form class="container contenedor" method="post" action="insertarServicios/">{% csrf_token %}
-
-
-            <div class="campo">
-                <label for="codigoServicio">Codigo del Servicio:</label>
-                <input type="number" name="codigoServicio" id="codigoServicio" required>
-            </div>
-
-            <br>
-
             <div class="campo">
                 <label for="nombreServicio">Nombre del servicio</label>
                 <input type="text" name="nombreServicio" id="nombreServicio" required>
