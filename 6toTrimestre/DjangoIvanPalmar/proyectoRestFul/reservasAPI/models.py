@@ -5,7 +5,7 @@ from usuariosAPI.models import tb_usuarios
 # Create your models here.
 
 class tb_reserva(models.Model):
-    codigo_res = models.IntegerField(primary_key=True,verbose_name="Numero de la reserva")
+    codigo_res = models.AutoField(primary_key=True,verbose_name="Numero de la reserva")
     numeroDocumento_cli = models.ForeignKey(tb_usuarios, verbose_name="Numero de documento del usuario", on_delete=models.CASCADE)
     fechaInicio_res = models.DateField(verbose_name='Fecha de inicio', auto_now=False, auto_now_add=False)
     fechaSalida_res = models.DateField(verbose_name='Fecha de salida', auto_now=False, auto_now_add=False)

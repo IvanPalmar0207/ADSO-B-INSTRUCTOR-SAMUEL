@@ -4,7 +4,7 @@ from APIservicios.models import tb_reserva, tb_consumo
 # Create your models here.
 
 class tb_metodoPago(models.Model):
-    codigo_mP = models.IntegerField(primary_key = True, verbose_name = 'Codigo del metodo de pago')
+    codigo_mP = models.AutoField(primary_key = True, verbose_name = 'Codigo del metodo de pago')
     tipo_mP = models.CharField(max_length=70, verbose_name = 'Tipo de metodo de pago')
 
 class tb_factura(models.Model):
